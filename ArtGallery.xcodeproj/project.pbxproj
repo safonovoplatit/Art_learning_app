@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C1F850E5CD74F7289BA0BF0 /* Domain/Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D384096DB234019B646A2DE /* Domain/Artwork.swift */; };
 		3472DACB4FFC4833846FFC04 /* Features/ArtworkPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F19A1F4564C979F26418F /* Features/ArtworkPager.swift */; };
-		38F0F3933B8A476B8FC61C85 /* Data/ChicagoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6F8742E570446EB522F390 /* Data/ChicagoAPI.swift */; };
+		38F0F3933B8A476B8FC61C85 /* Data/MuseumAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6F8742E570446EB522F390 /* Data/MuseumAPIError.swift */; };
 		4813748DA85A4C47B5BB86DE /* Data/GalleryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F2A485D6947F7843A9CC9 /* Data/GalleryStore.swift */; };
 		4D60BFF4989B46298CE4C2FD /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2965EFB4186AC013AEF /* MyApp.swift */; };
 		754374153C954FA09815B996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BB7690812AB46DD95361160 /* Assets.xcassets */; };
@@ -19,6 +19,8 @@
 		8AC3E3A355194212B646F038 /* Tests/UI/GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D17B1AFE6442A830D1DEF /* Tests/UI/GalleryUITests.swift */; };
 		9AF82113E53E49E4828748A0 /* Features/ArtworkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4040EC9BFB854CADBE06B039 /* Features/ArtworkCard.swift */; };
 		9C09EA7D00A34AD0B18DCD7A /* Data/TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33185CE1AE4195A89FFDF5 /* Data/TranslationService.swift */; };
+		A241A140FB1348A9AE5EE600 /* Data/HarvardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241A140FB1348A9AE5EE601 /* Data/HarvardAPI.swift */; };
+		A241A140FB1348A9AE5EE610 /* Data/ClevelandAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241A140FB1348A9AE5EE611 /* Data/ClevelandAPI.swift */; };
 		A8281404AD1846368F295AC8 /* Tests/Unit/GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F2AA7DA664E35BF5F95EE /* Tests/Unit/GalleryTests.swift */; };
 		B28407B1D9C44569B98AA33A /* Data/GalleryFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD020BD42AB4635ACF9CFFB /* Data/GalleryFixture.swift */; };
 		B47B93C982E8497D97568A58 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C3FD8DC294DBCA9CEBE7D /* ContentView.swift */; };
@@ -60,8 +62,11 @@
 		6F5F2AA7DA664E35BF5F95EE /* Tests/Unit/GalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/Unit/GalleryTests.swift; sourceTree = "<group>"; };
 		7A33185CE1AE4195A89FFDF5 /* Data/TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/TranslationService.swift; sourceTree = "<group>"; };
 		7EAE18E724AA4EDA9B2B66D8 /* ArtGalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ArtGalleryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B6F8742E570446EB522F390 /* Data/ChicagoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/ChicagoAPI.swift; sourceTree = "<group>"; };
+		8B6F8742E570446EB522F390 /* Data/MuseumAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/MuseumAPIError.swift; sourceTree = "<group>"; };
 		8C877C6C1DCD459A99F248E1 /* Features/FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/FavoritesView.swift; sourceTree = "<group>"; };
+		A241A140FB1348A9AE5EE601 /* Data/HarvardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/HarvardAPI.swift; sourceTree = "<group>"; };
+		A241A140FB1348A9AE5EE602 /* Config/Gallery.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/Gallery.xcconfig; sourceTree = "<group>"; };
+		A241A140FB1348A9AE5EE611 /* Data/ClevelandAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/ClevelandAPI.swift; sourceTree = "<group>"; };
 		B1C122B22B7C49848C7D2271 /* ArtGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = ArtGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63C3FD8DC294DBCA9CEBE7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C94F19A1F4564C979F26418F /* Features/ArtworkPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/ArtworkPager.swift; sourceTree = "<group>"; };
@@ -98,9 +103,12 @@
 		4EBF332D0DC040EC9D96AD8C = {
 			isa = PBXGroup;
 			children = (
+				A241A140FB1348A9AE5EE601 /* Data/HarvardAPI.swift */,
+				A241A140FB1348A9AE5EE611 /* Data/ClevelandAPI.swift */,
+				A241A140FB1348A9AE5EE602 /* Config/Gallery.xcconfig */,
 				1F62A2965EFB4186AC013AEF /* MyApp.swift */,
 				B63C3FD8DC294DBCA9CEBE7D /* ContentView.swift */,
-				8B6F8742E570446EB522F390 /* Data/ChicagoAPI.swift */,
+				8B6F8742E570446EB522F390 /* Data/MuseumAPIError.swift */,
 				1AD020BD42AB4635ACF9CFFB /* Data/GalleryFixture.swift */,
 				560F2A485D6947F7843A9CC9 /* Data/GalleryStore.swift */,
 				098D2D8C96914A0F966609EB /* Data/ImagePipeline.swift */,
@@ -247,9 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A241A140FB1348A9AE5EE600 /* Data/HarvardAPI.swift in Sources */,
+				A241A140FB1348A9AE5EE610 /* Data/ClevelandAPI.swift in Sources */,
 				4D60BFF4989B46298CE4C2FD /* MyApp.swift in Sources */,
 				B47B93C982E8497D97568A58 /* ContentView.swift in Sources */,
-				38F0F3933B8A476B8FC61C85 /* Data/ChicagoAPI.swift in Sources */,
+				38F0F3933B8A476B8FC61C85 /* Data/MuseumAPIError.swift in Sources */,
 				B28407B1D9C44569B98AA33A /* Data/GalleryFixture.swift in Sources */,
 				4813748DA85A4C47B5BB86DE /* Data/GalleryStore.swift in Sources */,
 				82C98F1A5D2B42FC93F3493A /* Data/ImagePipeline.swift in Sources */,
@@ -351,6 +361,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.uitests;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ART_GALLERY_TEST_TARGET";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				TEST_TARGET_NAME = ArtGallery;
 			};
@@ -364,7 +375,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.tests;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ART_GALLERY_TEST_TARGET";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArtGallery.app/ArtGallery";
 			};
@@ -377,6 +388,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.tests;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ART_GALLERY_TEST_TARGET";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArtGallery.app/ArtGallery";
 			};
@@ -384,12 +396,13 @@
 		};
 		A5E28D32180349FF8CCDA5C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A241A140FB1348A9AE5EE602 /* Config/Gallery.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Галерея";
+				INFOPLIST_KEY_CFBundleDisplayName = Artify;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -406,11 +419,12 @@
 		};
 		B093895A60CF4702A83B73FF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A241A140FB1348A9AE5EE602 /* Config/Gallery.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				INFOPLIST_KEY_CFBundleDisplayName = "Галерея";
+				INFOPLIST_KEY_CFBundleDisplayName = Artify;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -482,7 +496,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.uitests;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ART_GALLERY_TEST_TARGET";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = ArtGallery;
 			};

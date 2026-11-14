@@ -6,3 +6,5 @@ xcuserdata/
 *.xcuserstate
 *.ipa
 Artifacts/
+
+Config/HarvardKey.local.xcconfig

@@ -1,120 +1,138 @@
 {
-  "sourceLanguage": "ru",
-  "strings": {
-    "Галерея": {
-      "extractionState": "manual"
+  "sourceLanguage" : "ru",
+  "strings" : {
+    "Harvard Art Museums" : {
+
     },
-    "Галерея недоступна": {
-      "extractionState": "manual"
+    "Галерея" : {
+      "extractionState" : "manual"
     },
-    "Готово": {
-      "extractionState": "manual"
+    "Галерея недоступна" : {
+      "extractionState" : "manual"
     },
-    "Дата неизвестна": {
-      "extractionState": "manual"
+    "Готово" : {
+      "extractionState" : "manual"
     },
-    "Добавьте произведение в избранное из галереи.": {
-      "extractionState": "manual"
+    "Дата неизвестна" : {
+      "extractionState" : "manual"
     },
-    "Загружаем коллекцию…": {
-      "extractionState": "manual"
+    "Добавьте произведение в избранное из галереи." : {
+      "extractionState" : "manual"
     },
-    "Загрузить ещё": {
-      "extractionState": "manual"
+    "Загружаем коллекцию…" : {
+      "extractionState" : "manual"
     },
-    "Загрузить перевод": {
-      "extractionState": "manual"
+    "Загрузить ещё" : {
+      "extractionState" : "manual"
     },
-    "Загрузка изображения": {
-      "extractionState": "manual"
+    "Загрузить перевод" : {
+      "extractionState" : "manual"
     },
-    "Загрузка коллекции": {
-      "extractionState": "manual"
+    "Загрузка изображения" : {
+      "extractionState" : "manual"
     },
-    "Закрыть": {
-      "extractionState": "manual"
+    "Загрузка коллекции" : {
+      "extractionState" : "manual"
     },
-    "Зал по данным каталога: %@": {
-      "extractionState": "manual"
+    "Закрыть" : {
+      "extractionState" : "manual"
     },
-    "Здесь будут сохранённые картины": {
-      "extractionState": "manual"
+    "Зал по данным каталога: %@" : {
+      "extractionState" : "manual"
     },
-    "Избранное": {
-      "extractionState": "manual"
+    "Здесь будут сохранённые картины" : {
+      "extractionState" : "manual"
     },
-    "Изображение недоступно": {
-      "extractionState": "manual"
+    "Избранное" : {
+      "extractionState" : "manual"
     },
-    "Изображение: %@": {
-      "extractionState": "manual"
+    "Изображение недоступно" : {
+      "extractionState" : "manual"
     },
-    "Картина %lld": {
-      "extractionState": "manual"
+    "Изображение: %@" : {
+      "extractionState" : "manual"
     },
-    "Конец коллекции": {
-      "extractionState": "manual"
+    "Картина %lld" : {
+      "extractionState" : "manual"
     },
-    "Местонахождение неизвестно": {
-      "extractionState": "manual"
+    "Кливлендский музей искусства · Кливленд, США" : {
+      "extractionState" : "manual"
     },
-    "Название и аннотация переведены автоматически.": {
-      "extractionState": "manual"
+    "Конец коллекции" : {
+      "extractionState" : "manual"
     },
-    "Не удалось загрузить произведения музея.": {
-      "extractionState": "manual"
+    "Местонахождение неизвестно" : {
+      "extractionState" : "manual"
     },
-    "Не удалось открыть локальную коллекцию": {
-      "extractionState": "manual"
+    "Музей" : {
+      "extractionState" : "manual"
     },
-    "Не удалось сохранить изменения": {
-      "extractionState": "manual"
+    "Название и аннотация переведены автоматически." : {
+      "extractionState" : "manual"
     },
-    "Нет интернета": {
-      "extractionState": "manual"
+    "Не удалось загрузить произведения музея." : {
+      "extractionState" : "manual"
     },
-    "Нет произведений": {
-      "extractionState": "manual"
+    "Не удалось открыть локальную коллекцию" : {
+      "extractionState" : "manual"
     },
-    "Описание: Art Institute of Chicago, CC BY 4.0": {
-      "extractionState": "manual"
+    "Не удалось сохранить изменения" : {
+      "extractionState" : "manual"
     },
-    "Открываем галерею…": {
-      "extractionState": "manual"
+    "Неизвестный автор" : {
+
     },
-    "Открыть изображение": {
-      "extractionState": "manual"
+    "Нет интернета" : {
+      "extractionState" : "manual"
     },
-    "Офлайн": {
-      "extractionState": "manual"
+    "Нет произведений" : {
+      "extractionState" : "manual"
     },
-    "Повторить": {
-      "extractionState": "manual"
+    "ок. " : {
+
     },
-    "Повторить перевод": {
-      "extractionState": "manual"
+    "Открываем галерею…" : {
+      "extractionState" : "manual"
     },
-    "Предыдущее произведение": {
-      "extractionState": "manual"
+    "Открыть изображение" : {
+      "extractionState" : "manual"
     },
-    "Следующее произведение": {
-      "extractionState": "manual"
+    "Открыть коллекцию Кливленда" : {
+      "extractionState" : "manual"
     },
-    "Сохранить в избранное": {
-      "extractionState": "manual"
+    "Офлайн" : {
+      "extractionState" : "manual"
     },
-    "Страница произведения": {
-      "extractionState": "manual"
+    "Повторить" : {
+      "extractionState" : "manual"
     },
-    "Удалить": {
-      "extractionState": "manual"
+    "Повторить перевод" : {
+      "extractionState" : "manual"
     },
-    "Удалить из избранного": {
-      "extractionState": "manual"
+    "Поделиться" : {
+
     },
-    "Чикагский институт искусств · Чикаго, США": {
-      "extractionState": "manual"
+    "Предыдущее произведение" : {
+      "extractionState" : "manual"
+    },
+    "Сервер музея отклонил загрузку" : {
+      "extractionState" : "manual"
+    },
+    "Следующее произведение" : {
+      "extractionState" : "manual"
+    },
+    "Сохранить в избранное" : {
+      "extractionState" : "manual"
+    },
+    "Страница произведения" : {
+      "extractionState" : "manual"
+    },
+    "Удалить" : {
+      "extractionState" : "manual"
+    },
+    "Удалить из избранного" : {
+      "extractionState" : "manual"
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

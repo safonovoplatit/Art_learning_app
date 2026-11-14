@@ -1,6 +1,7 @@
 import CryptoKit
 import Foundation
 import ImageIO
+import OSLog
 import UIKit
 
 actor ImagePipeline {
@@ -10,6 +11,7 @@ actor ImagePipeline {
         var waiters: [UUID: CheckedContinuation<UIImage, Error>]
     }
 
+    private let logger = Logger(subsystem: "ArtGallery", category: "Images")
     private let memory = NSCache<NSURL, UIImage>()
     private let files = FileManager.default
     private let cacheDirectory: URL
@@ -27,12 +29,12 @@ actor ImagePipeline {
         let config = URLSessionConfiguration.ephemeral
         config.timeoutIntervalForRequest = 18
         config.urlCache = URLCache(memoryCapacity: 4_000_000, diskCapacity: 0)
-        config.httpMaximumConnectionsPerHost = 2
+        config.httpMaximumConnectionsPerHost = 4
         self.session = session ?? URLSession(configuration: config)
         memory.totalCostLimit = 48_000_000
     }
 
-    func image(_ url: URL, pixels: Int) async throws -> UIImage {
+    func image(_ url: URL, pixels: Int, fallback: URL? = nil) async throws -> UIImage {
         try Task.checkCancellation()
         if let image = memory.object(forKey: url as NSURL) { return image }
         let token = UUID()
@@ -43,7 +45,7 @@ actor ImagePipeline {
                     running[url] = flight
                 } else {
                     let id = UUID()
-                    let task = Task { await self.fetch(url, pixels: pixels, id: id) }
+                    let task = Task { await self.fetch(url, pixels: pixels, fallback: fallback, id: id) }
                     running[url] = Flight(task: task, id: id, waiters: [token: continuation])
                 }
             }
@@ -52,7 +54,7 @@ actor ImagePipeline {
         }
     }
 
-    func setFavorite(_ saved: Bool, url: URL, pixels: Int) async {
+    func setFavorite(_ saved: Bool, url: URL, pixels: Int, fallback: URL? = nil) async {
         let local = location(url, in: favoritesDirectory)
         if saved {
             keepOffline.insert(url)
@@ -61,7 +63,7 @@ actor ImagePipeline {
                 persist(data, url: url, favorite: true)
             } else {
                 memory.removeObject(forKey: url as NSURL)
-                _ = try? await image(url, pixels: pixels)
+                _ = try? await image(url, pixels: pixels, fallback: fallback)
             }
         } else {
             keepOffline.remove(url)
@@ -82,12 +84,15 @@ actor ImagePipeline {
         }
     }
 
-    private func fetch(_ url: URL, pixels: Int, id: UUID) async {
+    private func fetch(_ url: URL, pixels: Int, fallback: URL?, id: UUID) async {
         let result: Result<UIImage, Error>
         do {
-            let image = try await load(url, pixels: pixels)
+            let image = try await load(url, pixels: pixels, fallback: fallback)
             result = .success(image)
         } catch {
+            if !Task.isCancelled {
+                logger.error("Image unavailable (primary host \(url.host ?? "", privacy: .public)): \(String(describing: error), privacy: .public)")
+            }
             result = .failure(error)
         }
         guard running[url]?.id == id else { return }
@@ -96,7 +101,7 @@ actor ImagePipeline {
         }
     }
 
-    private func load(_ url: URL, pixels: Int) async throws -> UIImage {
+    private func load(_ url: URL, pixels: Int, fallback: URL?) async throws -> UIImage {
         for directory in [favoritesDirectory, cacheDirectory] {
             let file = location(url, in: directory)
             guard let data = try? Data(contentsOf: file) else { continue }
@@ -106,16 +111,46 @@ actor ImagePipeline {
             }
             try? files.removeItem(at: file)
         }
-        let (data, response) = try await session.data(from: url)
+        let data: Data
+        let http: HTTPURLResponse
+        let image: UIImage
+        do {
+            (data, http, image) = try await download(url, pixels: pixels)
+        } catch {
+            try Task.checkCancellation()
+            guard let fallback else { throw error }
+            (data, http, image) = try await download(fallback, pixels: pixels)
+        }
         try Task.checkCancellation()
-        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode),
-              data.count <= 24_000_000, let image = decode(data, pixels: pixels)
-        else { throw URLError(.cannotDecodeContentData) }
         let cacheControl = http.value(forHTTPHeaderField: "Cache-Control")?.lowercased() ?? ""
-        if !cacheControl.contains("no-store") {
+        if url.host != "nrs.harvard.edu", !cacheControl.contains("no-store") {
             persist(data, url: url, favorite: keepOffline.contains(url))
         }
         return remember(image, url: url)
+    }
+
+    private func download(_ url: URL, pixels: Int) async throws -> (Data, HTTPURLResponse, UIImage) {
+        var request = URLRequest(url: url, timeoutInterval: 18)
+        request.setValue("image/*", forHTTPHeaderField: "Accept")
+        for attempt in 0...1 {
+            do {
+                let (data, response) = try await session.data(for: request)
+                try Task.checkCancellation()
+                guard let http = response as? HTTPURLResponse else { throw URLError(.badServerResponse) }
+                if attempt == 0, (500...599).contains(http.statusCode) {
+                    try await Task.sleep(for: .milliseconds(400))
+                    continue
+                }
+                guard (200..<300).contains(http.statusCode) else { throw MuseumAPIError.http(http.statusCode) }
+                guard data.count <= 24_000_000, let image = decode(data, pixels: pixels) else {
+                    throw URLError(.cannotDecodeContentData)
+                }
+                return (data, http, image)
+            } catch let error as URLError where attempt == 0 && [.timedOut, .networkConnectionLost].contains(error.code) {
+                try await Task.sleep(for: .milliseconds(400))
+            }
+        }
+        throw URLError(.badServerResponse)
     }
 
     private func decode(_ data: Data, pixels: Int) -> UIImage? {

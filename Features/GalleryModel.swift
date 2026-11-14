@@ -7,6 +7,7 @@ final class GalleryModel {
     enum Failure { case offline, network, storage }
 
     private let repository: any ArtworkRepository
+    private let shuffleArtworks: Bool
     let images: ImagePipeline
     var artworks: [Artwork] = []
     var favorites: [Artwork] = []
@@ -14,6 +15,7 @@ final class GalleryModel {
     private(set) var nextPage: Int? = 1
     private(set) var loading = false
     private(set) var restored = false
+    private(set) var attemptedInitialLoad = false
     private(set) var failure: Failure?
     private(set) var offline = false
     var storageAlert = false
@@ -21,18 +23,19 @@ final class GalleryModel {
     var current: Artwork? { artworks.indices.contains(index) ? artworks[index] : nil }
     var nearEnd: Bool { artworks.count - index <= 6 }
 
-    init(repository: any ArtworkRepository, images: ImagePipeline) {
+    init(repository: any ArtworkRepository, images: ImagePipeline, shuffleArtworks: Bool = true) {
         self.repository = repository
         self.images = images
+        self.shuffleArtworks = shuffleArtworks
     }
 
     func restore() {
         guard !restored else { return }
         do {
             let snapshot = try repository.restore()
-            artworks = snapshot.artworks
+            artworks = shuffleArtworks ? snapshot.artworks.shuffled() : snapshot.artworks
             favorites = snapshot.favorites
-            index = artworks.firstIndex { $0.id == snapshot.currentID } ?? 0
+            index = shuffleArtworks ? 0 : (artworks.firstIndex { $0.id == snapshot.currentID } ?? 0)
             nextPage = snapshot.nextPage
             failure = nil
         } catch {
@@ -50,7 +53,10 @@ final class GalleryModel {
               nextPage != nil else { return }
         loading = true
         failure = nil
-        defer { loading = false }
+        defer {
+            loading = false
+            if !Task.isCancelled { attemptedInitialLoad = true }
+        }
 
         // Bound each batch, including pages that contain duplicates or unusable records.
         for _ in 0..<6 {
@@ -60,7 +66,7 @@ final class GalleryModel {
                 let selected = current?.id
                 artworks.removeAll { loaded.restrictedIDs.contains($0.id) }
                 favorites.removeAll { loaded.restrictedIDs.contains($0.id) }
-                artworks.append(contentsOf: loaded.artworks)
+                artworks.append(contentsOf: shuffleArtworks ? loaded.artworks.shuffled() : loaded.artworks)
                 nextPage = loaded.nextPage
                 index = artworks.firstIndex { $0.id == selected } ?? min(index, max(0, artworks.count - 1))
             } catch is CancellationError {
@@ -119,7 +125,7 @@ final class GalleryModel {
         }
         for artwork in candidates {
             guard !Task.isCancelled else { return }
-            _ = try? await images.image(artwork.imageURL(width: width), pixels: width * 3 / 2)
+            _ = try? await images.image(artwork.imageURL(width: width), pixels: width * 3 / 2, fallback: artwork.fallbackImageURL(width: width))
         }
     }
 

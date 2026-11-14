@@ -29,25 +29,38 @@ final class StoredGallery {
 final class GalleryStore: ArtworkRepository {
     private let context: ModelContext
     private let provider: any MuseumAPIProvider
+    private let source: MuseumSource
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
 
-    init(container: ModelContainer, provider: any MuseumAPIProvider) {
+    init(container: ModelContainer, provider: any MuseumAPIProvider, source: MuseumSource = .cleveland) {
         context = ModelContext(container)
         context.autosaveEnabled = false
         self.provider = provider
+        self.source = source
     }
 
     func restore() throws -> GallerySnapshot {
-        let state = try context.fetch(FetchDescriptor<StoredGallery>()).first
+        let state = try storedState()
         let rows = try context.fetch(FetchDescriptor<StoredArtwork>())
         let decoded = rows.compactMap { row in decode(row).map { (row, $0) } }
+        let expired = decoded.filter { $0.1.hasExpired }
+        if !expired.isEmpty {
+            try transaction {
+                for (row, _) in expired { context.delete(row) }
+                if source == .harvard { state?.nextPage = 1 }
+            }
+        }
+        let available = decoded.filter { !$0.1.hasExpired }
+        let gallery = available.filter { $0.0.order != nil && $0.1.source == source }
+            .sorted { ($0.0.order ?? 0) < ($1.0.order ?? 0) }.map { $0.1 }
+        let restartCleveland = source == .cleveland && state?.nextPage == nil
+            && gallery.count <= 3
         return GallerySnapshot(
-            artworks: decoded.filter { $0.0.order != nil }
-                .sorted { ($0.0.order ?? 0) < ($1.0.order ?? 0) }.map { $0.1 },
-            favorites: decoded.filter { $0.0.savedAt != nil }
+            artworks: gallery,
+            favorites: available.filter { $0.0.savedAt != nil }
                 .sorted { ($0.0.savedAt ?? .distantPast) > ($1.0.savedAt ?? .distantPast) }.map { $0.1 },
-            currentID: state?.currentID, nextPage: state == nil ? 1 : state?.nextPage
+            currentID: state?.currentID, nextPage: state == nil || restartCleveland || (source == .harvard && !available.contains { $0.1.source == .harvard && $0.0.order != nil }) ? 1 : state?.nextPage
         )
     }
 
@@ -125,9 +138,17 @@ final class GalleryStore: ArtworkRepository {
         return try context.fetch(descriptor).first
     }
 
+    private var stateKey: String { "gallery.\(source.rawValue)" }
+
+    private func storedState() throws -> StoredGallery? {
+        let key = stateKey
+        return try context.fetch(FetchDescriptor<StoredGallery>(predicate: #Predicate { $0.key == key })).first
+    }
+
     private func state() throws -> StoredGallery {
-        if let state = try context.fetch(FetchDescriptor<StoredGallery>()).first { return state }
+        if let state = try storedState() { return state }
         let new = StoredGallery()
+        new.key = stateKey
         context.insert(new)
         return new
     }

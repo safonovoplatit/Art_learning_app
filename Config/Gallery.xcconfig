@@ -1,0 +1,2 @@
+#include? "HarvardKey.local.xcconfig"
+INFOPLIST_FILE = Config/Gallery-Info.plist

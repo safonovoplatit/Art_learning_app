@@ -1,7 +1,15 @@
 import Foundation
 
 enum MuseumSource: String, Codable, Sendable {
-    case chicago
+    case harvard
+    case cleveland
+
+    var displayName: String {
+        switch self {
+        case .harvard: "Harvard Art Museums"
+        case .cleveland: "Cleveland Museum of Art"
+        }
+    }
 }
 
 struct Artwork: Identifiable, Codable, Hashable, Sendable {
@@ -22,9 +30,14 @@ struct Artwork: Identifiable, Codable, Hashable, Sendable {
     let credit: String?
     let retrievedAt: Date
 
+    var hasExpired: Bool {
+        source == .harvard && Date.now.timeIntervalSince(retrievedAt) >= 14 * 24 * 60 * 60
+    }
+
     var title: String { translation?.title ?? originalTitle }
     var annotation: String { translation?.annotation ?? originalDescription }
     var translation: ArtworkTranslation?
+    var largeImageURL: URL?
 
     var author: String {
         guard let originalArtist else { return String(localized: "Неизвестный автор") }
@@ -36,8 +49,14 @@ struct Artwork: Identifiable, Codable, Hashable, Sendable {
     }
 
     func imageURL(width: Int) -> URL {
-        imageBase.appending(path: "full").appending(path: "\(width),")
+        if source == .cleveland { return width > 960 ? (largeImageURL ?? imageBase) : imageBase }
+        return imageBase.appending(path: "full").appending(path: "\(width),")
             .appending(path: "0").appending(path: "default.jpg")
+    }
+
+    func fallbackImageURL(width: Int) -> URL? {
+        guard source == .cleveland, let largeImageURL, largeImageURL != imageBase else { return nil }
+        return width > 960 ? imageBase : largeImageURL
     }
 
     private static let artistNames = [

@@ -39,14 +39,14 @@ struct ArtworkViewer: View {
         .task(id: retry) {
             failed = false
             for rendition in (artwork.isZoomable ? [width, 843] : [843, width]).uniqued {
-                if let image = try? await pipeline.image(artwork.imageURL(width: rendition), pixels: rendition * 3 / 2),
+                if let image = try? await pipeline.image(artwork.imageURL(width: rendition), pixels: rendition * 3 / 2, fallback: artwork.fallbackImageURL(width: rendition)),
                    !Task.isCancelled {
                     picture = image
                     break
                 }
             }
             if artwork.isZoomable,
-               let large = try? await pipeline.image(artwork.imageURL(width: 1800), pixels: 2200),
+               let large = try? await pipeline.image(artwork.imageURL(width: 1800), pixels: 2200, fallback: artwork.fallbackImageURL(width: 1800)),
                !Task.isCancelled {
                 picture = large
             }

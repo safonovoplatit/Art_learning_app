@@ -4,6 +4,9 @@ import UIKit
 struct ContentView: View {
     let model: GalleryModel
     var translationEnabled = true
+    let museum: MuseumSource
+    let museums: [MuseumSource]
+    let selectMuseum: (MuseumSource) -> Void
     @Environment(\.displayScale) private var scale
     @State private var showFavorites = false
     @State private var viewer: Artwork?
@@ -16,11 +19,13 @@ struct ContentView: View {
                 let width = imageWidth(geometry.size.width)
                 VStack(spacing: 0) {
                     if model.current != nil {
-                        ArtworkPager(artworks: model.artworks, index: model.index, select: select) { work, parallax in
+                        ArtworkPager(artworks: model.artworks, index: model.index, select: select) { work in
                             ArtworkCard(
                                 artwork: work, width: width,
                                 imageHeight: max(155, min(440, geometry.size.height * 0.49)),
-                                model: model, parallax: parallax, showImage: { viewer = work }
+                                model: model,
+                                switchCollection: museum == .cleveland ? nil : { selectMuseum(.cleveland) },
+                                showImage: { viewer = work }
                             )
                         }
                         footer
@@ -42,6 +47,24 @@ struct ContentView: View {
             .navigationTitle("Галерея")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                if !museums.isEmpty {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Menu("Музей", systemImage: "building.columns") {
+                            ForEach(museums, id: \.self) { source in
+                                Button {
+                                    selectMuseum(source)
+                                } label: {
+                                    if source == museum {
+                                        Label(source.displayName, systemImage: "checkmark")
+                                    } else {
+                                        Text(source.displayName)
+                                    }
+                                }
+                            }
+                        }
+                        .labelStyle(.iconOnly)
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Избранное", systemImage: "bookmark") { showFavorites = true }
                         .labelStyle(.iconOnly)
@@ -72,14 +95,16 @@ struct ContentView: View {
 
     private func storeFavoriteImages() async {
         // Use a fixed rendition so the saved file also works after rotation or on a different size class.
-        let urls = Set(model.favorites.map { $0.imageURL(width: 843) })
+        let cacheable = model.favorites.filter { $0.source != .harvard }
+        let urls = Set(cacheable.map { $0.imageURL(width: 843) })
         for removed in pinned.subtracting(urls) {
             await model.images.setFavorite(false, url: removed, pixels: 1264)
         }
         pinned = urls
-        for url in urls {
+        for artwork in cacheable {
             guard !Task.isCancelled else { return }
-            await model.images.setFavorite(true, url: url, pixels: 1264)
+            await model.images.setFavorite(true, url: artwork.imageURL(width: 843), pixels: 1264,
+                                           fallback: artwork.fallbackImageURL(width: 843))
         }
     }
 
@@ -88,7 +113,7 @@ struct ContentView: View {
     }
 
     @ViewBuilder private var empty: some View {
-        if !model.restored || model.loading {
+        if model.failure == nil && (!model.restored || model.loading || (!model.attemptedInitialLoad && model.nextPage != nil)) {
             ProgressView("Загружаем коллекцию…")
         } else if let failure = model.failure {
             ContentUnavailableView {
