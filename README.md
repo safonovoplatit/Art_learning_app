@@ -2,7 +2,7 @@
 
 Native art gallery app for IOS 26 and higher. Allows you to read about artworks in real time. Based on open API of Cleveland museum of art 
 
-#Build and Run
+Build and Run
 1. Open ArtGallery.xcodeproj from the source directory. This standalone project contains the app and test targets.
 2. Select the ArtGallery scheme and an iPhone simulator, then click Run. The app fetches artwork and images from the museum API and reuses cached images when available.
 3. For a physical iPhone, select your team under Signing & Capabilities, set a bundle identifier you control, and run on the device.
