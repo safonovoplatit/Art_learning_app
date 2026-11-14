@@ -1,0 +1,123 @@
+{
+  "sourceLanguage": "ru",
+  "strings": {
+    "Галерея": {
+      "extractionState": "manual"
+    },
+    "Галерея недоступна": {
+      "extractionState": "manual"
+    },
+    "Готово": {
+      "extractionState": "manual"
+    },
+    "Дата неизвестна": {
+      "extractionState": "manual"
+    },
+    "Добавьте произведение в избранное из галереи.": {
+      "extractionState": "manual"
+    },
+    "Загружаем коллекцию…": {
+      "extractionState": "manual"
+    },
+    "Загрузить ещё": {
+      "extractionState": "manual"
+    },
+    "Загрузить перевод": {
+      "extractionState": "manual"
+    },
+    "Загрузка изображения": {
+      "extractionState": "manual"
+    },
+    "Загрузка коллекции": {
+      "extractionState": "manual"
+    },
+    "Закрыть": {
+      "extractionState": "manual"
+    },
+    "Зал по данным каталога: %@": {
+      "extractionState": "manual"
+    },
+    "Здесь будут сохранённые картины": {
+      "extractionState": "manual"
+    },
+    "Избранное": {
+      "extractionState": "manual"
+    },
+    "Изображение недоступно": {
+      "extractionState": "manual"
+    },
+    "Изображение: %@": {
+      "extractionState": "manual"
+    },
+    "Картина %lld": {
+      "extractionState": "manual"
+    },
+    "Конец коллекции": {
+      "extractionState": "manual"
+    },
+    "Местонахождение неизвестно": {
+      "extractionState": "manual"
+    },
+    "Название и аннотация переведены автоматически.": {
+      "extractionState": "manual"
+    },
+    "Не удалось загрузить произведения музея.": {
+      "extractionState": "manual"
+    },
+    "Не удалось открыть локальную коллекцию": {
+      "extractionState": "manual"
+    },
+    "Не удалось открыть локальную коллекцию.": {
+      "extractionState": "manual"
+    },
+    "Не удалось сохранить изменения": {
+      "extractionState": "manual"
+    },
+    "Нет интернета": {
+      "extractionState": "manual"
+    },
+    "Нет произведений": {
+      "extractionState": "manual"
+    },
+    "Описание: Art Institute of Chicago, CC BY 4.0": {
+      "extractionState": "manual"
+    },
+    "Открываем галерею…": {
+      "extractionState": "manual"
+    },
+    "Открыть изображение": {
+      "extractionState": "manual"
+    },
+    "Офлайн": {
+      "extractionState": "manual"
+    },
+    "Повторить": {
+      "extractionState": "manual"
+    },
+    "Повторить перевод": {
+      "extractionState": "manual"
+    },
+    "Предыдущее произведение": {
+      "extractionState": "manual"
+    },
+    "Следующее произведение": {
+      "extractionState": "manual"
+    },
+    "Сохранить в избранное": {
+      "extractionState": "manual"
+    },
+    "Страница произведения": {
+      "extractionState": "manual"
+    },
+    "Удалить": {
+      "extractionState": "manual"
+    },
+    "Удалить из избранного": {
+      "extractionState": "manual"
+    },
+    "Чикагский институт искусств · Чикаго, США": {
+      "extractionState": "manual"
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,8 @@
+.DS_Store
+DerivedData/
+Build/
+*.xcresult
+xcuserdata/
+*.xcuserstate
+*.ipa
+Artifacts/
