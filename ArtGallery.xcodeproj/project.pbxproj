@@ -1,415 +1,533 @@
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
-	classes = {};
+	classes = {
+	};
 	objectVersion = 56;
 	objects = {
-		B4E13699CE884D23AB03BFB8 = {
-			isa = PBXProject;
-			buildConfigurationList = D3E3DED768B24B69BA723566;
-			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = ru;
-			knownRegions = (ru, Base);
-			mainGroup = 4EBF332D0DC040EC9D96AD8C;
-			productRefGroup = C6AE6D39D69143CCB53F50FB;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = ( A36A3919BE4C4C8D8908690A, EB27337949CF4FB5BC808AE9, 034396C87DFC4E7393B31606, );
+
+/* Begin PBXBuildFile section */
+		1C1F850E5CD74F7289BA0BF0 /* Domain/Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D384096DB234019B646A2DE /* Domain/Artwork.swift */; };
+		3472DACB4FFC4833846FFC04 /* Features/ArtworkPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F19A1F4564C979F26418F /* Features/ArtworkPager.swift */; };
+		38F0F3933B8A476B8FC61C85 /* Data/ChicagoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6F8742E570446EB522F390 /* Data/ChicagoAPI.swift */; };
+		4813748DA85A4C47B5BB86DE /* Data/GalleryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F2A485D6947F7843A9CC9 /* Data/GalleryStore.swift */; };
+		4D60BFF4989B46298CE4C2FD /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62A2965EFB4186AC013AEF /* MyApp.swift */; };
+		754374153C954FA09815B996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BB7690812AB46DD95361160 /* Assets.xcassets */; };
+		7AD69E77F6C346CE98274F93 /* Features/ArtworkViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD9C4308D4FF78A73C5C2 /* Features/ArtworkViewer.swift */; };
+		7E6A3C208B31430A8898CFA3 /* Features/ArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288D4882828A45B39F53EB35 /* Features/ArtworkImage.swift */; };
+		82C98F1A5D2B42FC93F3493A /* Data/ImagePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D2D8C96914A0F966609EB /* Data/ImagePipeline.swift */; };
+		8AC3E3A355194212B646F038 /* Tests/UI/GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D17B1AFE6442A830D1DEF /* Tests/UI/GalleryUITests.swift */; };
+		9AF82113E53E49E4828748A0 /* Features/ArtworkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4040EC9BFB854CADBE06B039 /* Features/ArtworkCard.swift */; };
+		9C09EA7D00A34AD0B18DCD7A /* Data/TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33185CE1AE4195A89FFDF5 /* Data/TranslationService.swift */; };
+		A8281404AD1846368F295AC8 /* Tests/Unit/GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F2AA7DA664E35BF5F95EE /* Tests/Unit/GalleryTests.swift */; };
+		B28407B1D9C44569B98AA33A /* Data/GalleryFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD020BD42AB4635ACF9CFFB /* Data/GalleryFixture.swift */; };
+		B47B93C982E8497D97568A58 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C3FD8DC294DBCA9CEBE7D /* ContentView.swift */; };
+		DBFE9E6E648D467E83D3BA60 /* Data/MuseumText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE21962EE64CF19346F112 /* Data/MuseumText.swift */; };
+		F09B611C68CC4A5FBDBA6EC0 /* Features/GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C2C867701846E59CE1F031 /* Features/GalleryModel.swift */; };
+		F88418B6CE0D40D3B7DED976 /* Features/FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C877C6C1DCD459A99F248E1 /* Features/FavoritesView.swift */; };
+		FABA57E28B624869A677E328 /* Resources/Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D5914C5219B54EBBBFDD3F08 /* Resources/Localizable.xcstrings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		036E62248B234FDDB19FD50F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4E13699CE884D23AB03BFB8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A36A3919BE4C4C8D8908690A;
+			remoteInfo = ArtGallery;
 		};
+		9B274EC2256F4BD98B54B06F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4E13699CE884D23AB03BFB8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A36A3919BE4C4C8D8908690A;
+			remoteInfo = ArtGallery;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		098D2D8C96914A0F966609EB /* Data/ImagePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/ImagePipeline.swift; sourceTree = "<group>"; };
+		1AD020BD42AB4635ACF9CFFB /* Data/GalleryFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/GalleryFixture.swift; sourceTree = "<group>"; };
+		1B0A839C1E004BFEADA24B4E /* ArtGalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ArtGalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F62A2965EFB4186AC013AEF /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
+		288D4882828A45B39F53EB35 /* Features/ArtworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/ArtworkImage.swift; sourceTree = "<group>"; };
+		3BB7690812AB46DD95361160 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4040EC9BFB854CADBE06B039 /* Features/ArtworkCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/ArtworkCard.swift; sourceTree = "<group>"; };
+		490D17B1AFE6442A830D1DEF /* Tests/UI/GalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/UI/GalleryUITests.swift; sourceTree = "<group>"; };
+		4D384096DB234019B646A2DE /* Domain/Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain/Artwork.swift; sourceTree = "<group>"; };
+		53C2C867701846E59CE1F031 /* Features/GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/GalleryModel.swift; sourceTree = "<group>"; };
+		560F2A485D6947F7843A9CC9 /* Data/GalleryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/GalleryStore.swift; sourceTree = "<group>"; };
+		6F5F2AA7DA664E35BF5F95EE /* Tests/Unit/GalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/Unit/GalleryTests.swift; sourceTree = "<group>"; };
+		7A33185CE1AE4195A89FFDF5 /* Data/TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/TranslationService.swift; sourceTree = "<group>"; };
+		7EAE18E724AA4EDA9B2B66D8 /* ArtGalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ArtGalleryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6F8742E570446EB522F390 /* Data/ChicagoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/ChicagoAPI.swift; sourceTree = "<group>"; };
+		8C877C6C1DCD459A99F248E1 /* Features/FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/FavoritesView.swift; sourceTree = "<group>"; };
+		B1C122B22B7C49848C7D2271 /* ArtGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = ArtGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B63C3FD8DC294DBCA9CEBE7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C94F19A1F4564C979F26418F /* Features/ArtworkPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/ArtworkPager.swift; sourceTree = "<group>"; };
+		D2FE21962EE64CF19346F112 /* Data/MuseumText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data/MuseumText.swift; sourceTree = "<group>"; };
+		D3BBD9C4308D4FF78A73C5C2 /* Features/ArtworkViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/ArtworkViewer.swift; sourceTree = "<group>"; };
+		D5914C5219B54EBBBFDD3F08 /* Resources/Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Resources/Localizable.xcstrings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04C80ABF954D41009B5CC6CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DF17F73D6FE4F01B6CA1ADF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAAF115946E1457EB0912010 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
 		4EBF332D0DC040EC9D96AD8C = {
 			isa = PBXGroup;
-			children = ( 1F62A2965EFB4186AC013AEF, B63C3FD8DC294DBCA9CEBE7D, 8B6F8742E570446EB522F390, 1AD020BD42AB4635ACF9CFFB, 560F2A485D6947F7843A9CC9, 098D2D8C96914A0F966609EB, D2FE21962EE64CF19346F112, 7A33185CE1AE4195A89FFDF5, 4D384096DB234019B646A2DE, 4040EC9BFB854CADBE06B039, 288D4882828A45B39F53EB35, C94F19A1F4564C979F26418F, D3BBD9C4308D4FF78A73C5C2, 8C877C6C1DCD459A99F248E1, 53C2C867701846E59CE1F031, 3BB7690812AB46DD95361160, D5914C5219B54EBBBFDD3F08, 6F5F2AA7DA664E35BF5F95EE, 490D17B1AFE6442A830D1DEF, C6AE6D39D69143CCB53F50FB, );
+			children = (
+				1F62A2965EFB4186AC013AEF /* MyApp.swift */,
+				B63C3FD8DC294DBCA9CEBE7D /* ContentView.swift */,
+				8B6F8742E570446EB522F390 /* Data/ChicagoAPI.swift */,
+				1AD020BD42AB4635ACF9CFFB /* Data/GalleryFixture.swift */,
+				560F2A485D6947F7843A9CC9 /* Data/GalleryStore.swift */,
+				098D2D8C96914A0F966609EB /* Data/ImagePipeline.swift */,
+				D2FE21962EE64CF19346F112 /* Data/MuseumText.swift */,
+				7A33185CE1AE4195A89FFDF5 /* Data/TranslationService.swift */,
+				4D384096DB234019B646A2DE /* Domain/Artwork.swift */,
+				4040EC9BFB854CADBE06B039 /* Features/ArtworkCard.swift */,
+				288D4882828A45B39F53EB35 /* Features/ArtworkImage.swift */,
+				C94F19A1F4564C979F26418F /* Features/ArtworkPager.swift */,
+				D3BBD9C4308D4FF78A73C5C2 /* Features/ArtworkViewer.swift */,
+				8C877C6C1DCD459A99F248E1 /* Features/FavoritesView.swift */,
+				53C2C867701846E59CE1F031 /* Features/GalleryModel.swift */,
+				3BB7690812AB46DD95361160 /* Assets.xcassets */,
+				D5914C5219B54EBBBFDD3F08 /* Resources/Localizable.xcstrings */,
+				6F5F2AA7DA664E35BF5F95EE /* Tests/Unit/GalleryTests.swift */,
+				490D17B1AFE6442A830D1DEF /* Tests/UI/GalleryUITests.swift */,
+				C6AE6D39D69143CCB53F50FB /* Products */,
+			);
 			sourceTree = "<group>";
 		};
-		C6AE6D39D69143CCB53F50FB = {
+		C6AE6D39D69143CCB53F50FB /* Products */ = {
 			isa = PBXGroup;
+			children = (
+				B1C122B22B7C49848C7D2271 /* ArtGallery.app */,
+				1B0A839C1E004BFEADA24B4E /* ArtGalleryTests.xctest */,
+				7EAE18E724AA4EDA9B2B66D8 /* ArtGalleryUITests.xctest */,
+			);
 			name = Products;
 			sourceTree = "<group>";
-			children = ( B1C122B22B7C49848C7D2271, 1B0A839C1E004BFEADA24B4E, 7EAE18E724AA4EDA9B2B66D8, );
 		};
-		1F62A2965EFB4186AC013AEF = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "MyApp.swift";
-			sourceTree = "<group>";
-		};
-		B63C3FD8DC294DBCA9CEBE7D = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "ContentView.swift";
-			sourceTree = "<group>";
-		};
-		8B6F8742E570446EB522F390 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Data/ChicagoAPI.swift";
-			sourceTree = "<group>";
-		};
-		1AD020BD42AB4635ACF9CFFB = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Data/GalleryFixture.swift";
-			sourceTree = "<group>";
-		};
-		560F2A485D6947F7843A9CC9 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Data/GalleryStore.swift";
-			sourceTree = "<group>";
-		};
-		098D2D8C96914A0F966609EB = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Data/ImagePipeline.swift";
-			sourceTree = "<group>";
-		};
-		D2FE21962EE64CF19346F112 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Data/MuseumText.swift";
-			sourceTree = "<group>";
-		};
-		7A33185CE1AE4195A89FFDF5 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Data/TranslationService.swift";
-			sourceTree = "<group>";
-		};
-		4D384096DB234019B646A2DE = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Domain/Artwork.swift";
-			sourceTree = "<group>";
-		};
-		4040EC9BFB854CADBE06B039 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Features/ArtworkCard.swift";
-			sourceTree = "<group>";
-		};
-		288D4882828A45B39F53EB35 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Features/ArtworkImage.swift";
-			sourceTree = "<group>";
-		};
-		C94F19A1F4564C979F26418F = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Features/ArtworkPager.swift";
-			sourceTree = "<group>";
-		};
-		D3BBD9C4308D4FF78A73C5C2 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Features/ArtworkViewer.swift";
-			sourceTree = "<group>";
-		};
-		8C877C6C1DCD459A99F248E1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Features/FavoritesView.swift";
-			sourceTree = "<group>";
-		};
-		53C2C867701846E59CE1F031 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Features/GalleryModel.swift";
-			sourceTree = "<group>";
-		};
-		4D60BFF4989B46298CE4C2FD = {
-			isa = PBXBuildFile;
-			fileRef = 1F62A2965EFB4186AC013AEF;
-		};
-		B47B93C982E8497D97568A58 = {
-			isa = PBXBuildFile;
-			fileRef = B63C3FD8DC294DBCA9CEBE7D;
-		};
-		38F0F3933B8A476B8FC61C85 = {
-			isa = PBXBuildFile;
-			fileRef = 8B6F8742E570446EB522F390;
-		};
-		B28407B1D9C44569B98AA33A = {
-			isa = PBXBuildFile;
-			fileRef = 1AD020BD42AB4635ACF9CFFB;
-		};
-		4813748DA85A4C47B5BB86DE = {
-			isa = PBXBuildFile;
-			fileRef = 560F2A485D6947F7843A9CC9;
-		};
-		82C98F1A5D2B42FC93F3493A = {
-			isa = PBXBuildFile;
-			fileRef = 098D2D8C96914A0F966609EB;
-		};
-		DBFE9E6E648D467E83D3BA60 = {
-			isa = PBXBuildFile;
-			fileRef = D2FE21962EE64CF19346F112;
-		};
-		9C09EA7D00A34AD0B18DCD7A = {
-			isa = PBXBuildFile;
-			fileRef = 7A33185CE1AE4195A89FFDF5;
-		};
-		1C1F850E5CD74F7289BA0BF0 = {
-			isa = PBXBuildFile;
-			fileRef = 4D384096DB234019B646A2DE;
-		};
-		9AF82113E53E49E4828748A0 = {
-			isa = PBXBuildFile;
-			fileRef = 4040EC9BFB854CADBE06B039;
-		};
-		7E6A3C208B31430A8898CFA3 = {
-			isa = PBXBuildFile;
-			fileRef = 288D4882828A45B39F53EB35;
-		};
-		3472DACB4FFC4833846FFC04 = {
-			isa = PBXBuildFile;
-			fileRef = C94F19A1F4564C979F26418F;
-		};
-		7AD69E77F6C346CE98274F93 = {
-			isa = PBXBuildFile;
-			fileRef = D3BBD9C4308D4FF78A73C5C2;
-		};
-		F88418B6CE0D40D3B7DED976 = {
-			isa = PBXBuildFile;
-			fileRef = 8C877C6C1DCD459A99F248E1;
-		};
-		F09B611C68CC4A5FBDBA6EC0 = {
-			isa = PBXBuildFile;
-			fileRef = 53C2C867701846E59CE1F031;
-		};
-		3BB7690812AB46DD95361160 = {
-			isa = PBXFileReference;
-			lastKnownFileType = folder.assetcatalog;
-			path = "Assets.xcassets";
-			sourceTree = "<group>";
-		};
-		754374153C954FA09815B996 = {
-			isa = PBXBuildFile;
-			fileRef = 3BB7690812AB46DD95361160;
-		};
-		D5914C5219B54EBBBFDD3F08 = {
-			isa = PBXFileReference;
-			lastKnownFileType = text.json.xcstrings;
-			path = "Resources/Localizable.xcstrings";
-			sourceTree = "<group>";
-		};
-		FABA57E28B624869A677E328 = {
-			isa = PBXBuildFile;
-			fileRef = D5914C5219B54EBBBFDD3F08;
-		};
-		B1C122B22B7C49848C7D2271 = {
-			isa = PBXFileReference;
-			explicitFileType = wrapper.application;
-			path = "ArtGallery.app";
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1479121C397B415296B653EB = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = ( 4D60BFF4989B46298CE4C2FD, B47B93C982E8497D97568A58, 38F0F3933B8A476B8FC61C85, B28407B1D9C44569B98AA33A, 4813748DA85A4C47B5BB86DE, 82C98F1A5D2B42FC93F3493A, DBFE9E6E648D467E83D3BA60, 9C09EA7D00A34AD0B18DCD7A, 1C1F850E5CD74F7289BA0BF0, 9AF82113E53E49E4828748A0, 7E6A3C208B31430A8898CFA3, 3472DACB4FFC4833846FFC04, 7AD69E77F6C346CE98274F93, F88418B6CE0D40D3B7DED976, F09B611C68CC4A5FBDBA6EC0, );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FAAF115946E1457EB0912010 = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (  );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		298096F45EA84ED6A81F1340 = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = ( 754374153C954FA09815B996, FABA57E28B624869A677E328, );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5E28D32180349FF8CCDA5C8 = {
-			isa = XCBuildConfiguration;
-			name = Debug;
-			buildSettings = { "INFOPLIST_KEY_CFBundleDisplayName" = "Галерея"; "INFOPLIST_KEY_UILaunchScreen_Generation" = "YES"; "INFOPLIST_KEY_UIApplicationSceneManifest_Generation" = "YES"; "INFOPLIST_KEY_UISupportedInterfaceOrientations" = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"; "ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon"; "PRODUCT_BUNDLE_IDENTIFIER" = "org.artgallery.ios"; "OTHER_LDFLAGS" = "$(inherited) -lxml2"; "SWIFT_EMIT_LOC_STRINGS" = "YES"; "SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG"; "DEBUG_INFORMATION_FORMAT" = "dwarf"; "ENABLE_TESTABILITY" = "YES"; "SWIFT_OPTIMIZATION_LEVEL" = "-Onone"; };
-		};
-		B093895A60CF4702A83B73FF = {
-			isa = XCBuildConfiguration;
-			name = Release;
-			buildSettings = { "INFOPLIST_KEY_CFBundleDisplayName" = "Галерея"; "INFOPLIST_KEY_UILaunchScreen_Generation" = "YES"; "INFOPLIST_KEY_UIApplicationSceneManifest_Generation" = "YES"; "INFOPLIST_KEY_UISupportedInterfaceOrientations" = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"; "ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon"; "PRODUCT_BUNDLE_IDENTIFIER" = "org.artgallery.ios"; "OTHER_LDFLAGS" = "$(inherited) -lxml2"; "SWIFT_EMIT_LOC_STRINGS" = "YES"; "SWIFT_COMPILATION_MODE" = "wholemodule"; "DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym"; };
-		};
-		704D536942054E23BD5C9CE7 = {
-			isa = XCConfigurationList;
-			buildConfigurations = ( A5E28D32180349FF8CCDA5C8, B093895A60CF4702A83B73FF, );
-			defaultConfigurationName = Release;
-			defaultConfigurationIsVisible = 0;
-		};
-		A36A3919BE4C4C8D8908690A = {
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		034396C87DFC4E7393B31606 /* ArtGalleryUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 704D536942054E23BD5C9CE7;
-			buildPhases = ( 1479121C397B415296B653EB, FAAF115946E1457EB0912010, 298096F45EA84ED6A81F1340, );
-			buildRules = ();
-			dependencies = (  );
-			name = ArtGallery;
-			productName = ArtGallery;
-			productReference = B1C122B22B7C49848C7D2271;
-			productType = "com.apple.product-type.application";
-		};
-		6F5F2AA7DA664E35BF5F95EE = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Tests/Unit/GalleryTests.swift";
-			sourceTree = "<group>";
-		};
-		A8281404AD1846368F295AC8 = {
-			isa = PBXBuildFile;
-			fileRef = 6F5F2AA7DA664E35BF5F95EE;
-		};
-		1B0A839C1E004BFEADA24B4E = {
-			isa = PBXFileReference;
-			explicitFileType = wrapper.cfbundle;
-			path = "ArtGalleryTests.xctest";
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3238BAF7ABFB4197873DB7FF = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = ( A8281404AD1846368F295AC8, );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04C80ABF954D41009B5CC6CF = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (  );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4C4D9CAA43A54ABC97AED840 = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (  );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B274EC2256F4BD98B54B06F = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B4E13699CE884D23AB03BFB8;
-			proxyType = 1;
-			remoteGlobalIDString = A36A3919BE4C4C8D8908690A;
-			remoteInfo = ArtGallery;
-		};
-		B094C5E4864B42CD825F96FC = {
-			isa = PBXTargetDependency;
-			target = A36A3919BE4C4C8D8908690A;
-			targetProxy = 9B274EC2256F4BD98B54B06F;
-		};
-		2D77452FFB0F4729BDF38A2B = {
-			isa = XCBuildConfiguration;
-			name = Debug;
-			buildSettings = { "PRODUCT_BUNDLE_IDENTIFIER" = "org.artgallery.ios.tests"; "TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/ArtGallery.app/ArtGallery"; "BUNDLE_LOADER" = "$(TEST_HOST)"; "SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG"; "DEBUG_INFORMATION_FORMAT" = "dwarf"; "ENABLE_TESTABILITY" = "YES"; "SWIFT_OPTIMIZATION_LEVEL" = "-Onone"; };
-		};
-		55B168FB82B74D378F318815 = {
-			isa = XCBuildConfiguration;
-			name = Release;
-			buildSettings = { "PRODUCT_BUNDLE_IDENTIFIER" = "org.artgallery.ios.tests"; "TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/ArtGallery.app/ArtGallery"; "BUNDLE_LOADER" = "$(TEST_HOST)"; "SWIFT_COMPILATION_MODE" = "wholemodule"; "DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym"; };
-		};
-		C8CBDD5FF7B04BADBE5E85B0 = {
-			isa = XCConfigurationList;
-			buildConfigurations = ( 2D77452FFB0F4729BDF38A2B, 55B168FB82B74D378F318815, );
-			defaultConfigurationName = Release;
-			defaultConfigurationIsVisible = 0;
-		};
-		EB27337949CF4FB5BC808AE9 = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C8CBDD5FF7B04BADBE5E85B0;
-			buildPhases = ( 3238BAF7ABFB4197873DB7FF, 04C80ABF954D41009B5CC6CF, 4C4D9CAA43A54ABC97AED840, );
-			buildRules = ();
-			dependencies = ( B094C5E4864B42CD825F96FC, );
-			name = ArtGalleryTests;
-			productName = ArtGalleryTests;
-			productReference = 1B0A839C1E004BFEADA24B4E;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		490D17B1AFE6442A830D1DEF = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.swift;
-			path = "Tests/UI/GalleryUITests.swift";
-			sourceTree = "<group>";
-		};
-		8AC3E3A355194212B646F038 = {
-			isa = PBXBuildFile;
-			fileRef = 490D17B1AFE6442A830D1DEF;
-		};
-		7EAE18E724AA4EDA9B2B66D8 = {
-			isa = PBXFileReference;
-			explicitFileType = wrapper.cfbundle;
-			path = "ArtGalleryUITests.xctest";
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5D508917EE5943579F6AA2F8 = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = ( 8AC3E3A355194212B646F038, );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DF17F73D6FE4F01B6CA1ADF = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (  );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C2CE58612BA4E1D9F73D42F = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (  );
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		036E62248B234FDDB19FD50F = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B4E13699CE884D23AB03BFB8;
-			proxyType = 1;
-			remoteGlobalIDString = A36A3919BE4C4C8D8908690A;
-			remoteInfo = ArtGallery;
-		};
-		628A31941D4E465FA1EAE552 = {
-			isa = PBXTargetDependency;
-			target = A36A3919BE4C4C8D8908690A;
-			targetProxy = 036E62248B234FDDB19FD50F;
-		};
-		FEE47C61554243A1936A5842 = {
-			isa = XCBuildConfiguration;
-			name = Debug;
-			buildSettings = { "PRODUCT_BUNDLE_IDENTIFIER" = "org.artgallery.ios.uitests"; "TEST_TARGET_NAME" = "ArtGallery"; "SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG"; "DEBUG_INFORMATION_FORMAT" = "dwarf"; "ENABLE_TESTABILITY" = "YES"; "SWIFT_OPTIMIZATION_LEVEL" = "-Onone"; };
-		};
-		0F3DFA2E77D74CC0B2108B56 = {
-			isa = XCBuildConfiguration;
-			name = Release;
-			buildSettings = { "PRODUCT_BUNDLE_IDENTIFIER" = "org.artgallery.ios.uitests"; "TEST_TARGET_NAME" = "ArtGallery"; "SWIFT_COMPILATION_MODE" = "wholemodule"; "DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym"; };
-		};
-		88B8879F4B1348A9AE5EE613 = {
-			isa = XCConfigurationList;
-			buildConfigurations = ( FEE47C61554243A1936A5842, 0F3DFA2E77D74CC0B2108B56, );
-			defaultConfigurationName = Release;
-			defaultConfigurationIsVisible = 0;
-		};
-		034396C87DFC4E7393B31606 = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 88B8879F4B1348A9AE5EE613;
-			buildPhases = ( 5D508917EE5943579F6AA2F8, 6DF17F73D6FE4F01B6CA1ADF, 2C2CE58612BA4E1D9F73D42F, );
-			buildRules = ();
-			dependencies = ( 628A31941D4E465FA1EAE552, );
+			buildConfigurationList = 88B8879F4B1348A9AE5EE613 /* Build configuration list for PBXNativeTarget "ArtGalleryUITests" */;
+			buildPhases = (
+				5D508917EE5943579F6AA2F8 /* Sources */,
+				6DF17F73D6FE4F01B6CA1ADF /* Frameworks */,
+				2C2CE58612BA4E1D9F73D42F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				628A31941D4E465FA1EAE552 /* PBXTargetDependency */,
+			);
 			name = ArtGalleryUITests;
 			productName = ArtGalleryUITests;
-			productReference = 7EAE18E724AA4EDA9B2B66D8;
+			productReference = 7EAE18E724AA4EDA9B2B66D8 /* ArtGalleryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		D2BA0845FC744E5BA5ADF6D0 = {
-			isa = XCBuildConfiguration;
-			name = Debug;
-			buildSettings = { "SDKROOT" = "iphoneos"; "SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator"; "TARGETED_DEVICE_FAMILY" = "1"; "IPHONEOS_DEPLOYMENT_TARGET" = "18.0"; "SWIFT_VERSION" = "5.0"; "SWIFT_STRICT_CONCURRENCY" = "complete"; "CLANG_ENABLE_MODULES" = "YES"; "GENERATE_INFOPLIST_FILE" = "YES"; "CURRENT_PROJECT_VERSION" = "1"; "MARKETING_VERSION" = "1.0"; "CODE_SIGN_STYLE" = "Automatic"; "PRODUCT_NAME" = "$(TARGET_NAME)"; "SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG"; "DEBUG_INFORMATION_FORMAT" = "dwarf"; "ENABLE_TESTABILITY" = "YES"; "SWIFT_OPTIMIZATION_LEVEL" = "-Onone"; };
+		A36A3919BE4C4C8D8908690A /* ArtGallery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 704D536942054E23BD5C9CE7 /* Build configuration list for PBXNativeTarget "ArtGallery" */;
+			buildPhases = (
+				1479121C397B415296B653EB /* Sources */,
+				FAAF115946E1457EB0912010 /* Frameworks */,
+				298096F45EA84ED6A81F1340 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArtGallery;
+			productName = ArtGallery;
+			productReference = B1C122B22B7C49848C7D2271 /* ArtGallery.app */;
+			productType = "com.apple.product-type.application";
 		};
-		07082C5E503747A6817F4978 = {
+		EB27337949CF4FB5BC808AE9 /* ArtGalleryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8CBDD5FF7B04BADBE5E85B0 /* Build configuration list for PBXNativeTarget "ArtGalleryTests" */;
+			buildPhases = (
+				3238BAF7ABFB4197873DB7FF /* Sources */,
+				04C80ABF954D41009B5CC6CF /* Frameworks */,
+				4C4D9CAA43A54ABC97AED840 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B094C5E4864B42CD825F96FC /* PBXTargetDependency */,
+			);
+			name = ArtGalleryTests;
+			productName = ArtGalleryTests;
+			productReference = 1B0A839C1E004BFEADA24B4E /* ArtGalleryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B4E13699CE884D23AB03BFB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2720;
+			};
+			buildConfigurationList = D3E3DED768B24B69BA723566 /* Build configuration list for PBXProject "ArtGallery" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ru;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ru,
+				Base,
+			);
+			mainGroup = 4EBF332D0DC040EC9D96AD8C;
+			productRefGroup = C6AE6D39D69143CCB53F50FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A36A3919BE4C4C8D8908690A /* ArtGallery */,
+				EB27337949CF4FB5BC808AE9 /* ArtGalleryTests */,
+				034396C87DFC4E7393B31606 /* ArtGalleryUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		298096F45EA84ED6A81F1340 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				754374153C954FA09815B996 /* Assets.xcassets in Resources */,
+				FABA57E28B624869A677E328 /* Resources/Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C2CE58612BA4E1D9F73D42F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C4D9CAA43A54ABC97AED840 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1479121C397B415296B653EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D60BFF4989B46298CE4C2FD /* MyApp.swift in Sources */,
+				B47B93C982E8497D97568A58 /* ContentView.swift in Sources */,
+				38F0F3933B8A476B8FC61C85 /* Data/ChicagoAPI.swift in Sources */,
+				B28407B1D9C44569B98AA33A /* Data/GalleryFixture.swift in Sources */,
+				4813748DA85A4C47B5BB86DE /* Data/GalleryStore.swift in Sources */,
+				82C98F1A5D2B42FC93F3493A /* Data/ImagePipeline.swift in Sources */,
+				DBFE9E6E648D467E83D3BA60 /* Data/MuseumText.swift in Sources */,
+				9C09EA7D00A34AD0B18DCD7A /* Data/TranslationService.swift in Sources */,
+				1C1F850E5CD74F7289BA0BF0 /* Domain/Artwork.swift in Sources */,
+				9AF82113E53E49E4828748A0 /* Features/ArtworkCard.swift in Sources */,
+				7E6A3C208B31430A8898CFA3 /* Features/ArtworkImage.swift in Sources */,
+				3472DACB4FFC4833846FFC04 /* Features/ArtworkPager.swift in Sources */,
+				7AD69E77F6C346CE98274F93 /* Features/ArtworkViewer.swift in Sources */,
+				F88418B6CE0D40D3B7DED976 /* Features/FavoritesView.swift in Sources */,
+				F09B611C68CC4A5FBDBA6EC0 /* Features/GalleryModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3238BAF7ABFB4197873DB7FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8281404AD1846368F295AC8 /* Tests/Unit/GalleryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D508917EE5943579F6AA2F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AC3E3A355194212B646F038 /* Tests/UI/GalleryUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		628A31941D4E465FA1EAE552 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A36A3919BE4C4C8D8908690A /* ArtGallery */;
+			targetProxy = 036E62248B234FDDB19FD50F /* PBXContainerItemProxy */;
+		};
+		B094C5E4864B42CD825F96FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A36A3919BE4C4C8D8908690A /* ArtGallery */;
+			targetProxy = 9B274EC2256F4BD98B54B06F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07082C5E503747A6817F4978 /* Release */ = {
 			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
 			name = Release;
-			buildSettings = { "SDKROOT" = "iphoneos"; "SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator"; "TARGETED_DEVICE_FAMILY" = "1"; "IPHONEOS_DEPLOYMENT_TARGET" = "18.0"; "SWIFT_VERSION" = "5.0"; "SWIFT_STRICT_CONCURRENCY" = "complete"; "CLANG_ENABLE_MODULES" = "YES"; "GENERATE_INFOPLIST_FILE" = "YES"; "CURRENT_PROJECT_VERSION" = "1"; "MARKETING_VERSION" = "1.0"; "CODE_SIGN_STYLE" = "Automatic"; "PRODUCT_NAME" = "$(TARGET_NAME)"; "SWIFT_COMPILATION_MODE" = "wholemodule"; "DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym"; };
 		};
-		D3E3DED768B24B69BA723566 = {
+		0F3DFA2E77D74CC0B2108B56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.uitests;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TEST_TARGET_NAME = ArtGallery;
+			};
+			name = Release;
+		};
+		2D77452FFB0F4729BDF38A2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.tests;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArtGallery.app/ArtGallery";
+			};
+			name = Debug;
+		};
+		55B168FB82B74D378F318815 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.tests;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArtGallery.app/ArtGallery";
+			};
+			name = Release;
+		};
+		A5E28D32180349FF8CCDA5C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Галерея";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B093895A60CF4702A83B73FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_KEY_CFBundleDisplayName = "Галерея";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lxml2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		D2BA0845FC744E5BA5ADF6D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FEE47C61554243A1936A5842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.artgallery.ios.uitests;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = ArtGallery;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		704D536942054E23BD5C9CE7 /* Build configuration list for PBXNativeTarget "ArtGallery" */ = {
 			isa = XCConfigurationList;
-			buildConfigurations = ( D2BA0845FC744E5BA5ADF6D0, 07082C5E503747A6817F4978, );
-			defaultConfigurationName = Release;
+			buildConfigurations = (
+				A5E28D32180349FF8CCDA5C8 /* Debug */,
+				B093895A60CF4702A83B73FF /* Release */,
+			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
+		88B8879F4B1348A9AE5EE613 /* Build configuration list for PBXNativeTarget "ArtGalleryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEE47C61554243A1936A5842 /* Debug */,
+				0F3DFA2E77D74CC0B2108B56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8CBDD5FF7B04BADBE5E85B0 /* Build configuration list for PBXNativeTarget "ArtGalleryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D77452FFB0F4729BDF38A2B /* Debug */,
+				55B168FB82B74D378F318815 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3E3DED768B24B69BA723566 /* Build configuration list for PBXProject "ArtGallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2BA0845FC744E5BA5ADF6D0 /* Debug */,
+				07082C5E503747A6817F4978 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
 	};
-	rootObject = B4E13699CE884D23AB03BFB8;
+	rootObject = B4E13699CE884D23AB03BFB8 /* Project object */;
 }

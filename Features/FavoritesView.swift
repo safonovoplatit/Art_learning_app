@@ -28,6 +28,7 @@ struct FavoritesView: View {
                                 }
                                 .padding(.vertical, 4)
                             }
+                            .accessibilityIdentifier("favorite-row-\(work.id)")
                             .swipeActions {
                                 Button("Удалить", role: .destructive) { model.toggleFavorite(work) }
                             }

@@ -94,7 +94,7 @@ struct ContentView: View {
             ContentUnavailableView {
                 Label(failure == .offline ? "Нет интернета" : "Галерея недоступна", systemImage: "photo")
             } description: {
-                Text(failure == .storage ? "Не удалось открыть локальную коллекцию." : "Не удалось загрузить произведения музея.")
+                Text(failure == .storage ? "Не удалось открыть локальную коллекцию" : "Не удалось загрузить произведения музея.")
             } actions: {
                 Button("Повторить") { Task { await model.load(retry: true) } }.buttonStyle(.bordered)
             }

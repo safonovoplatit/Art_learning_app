@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ArtworkPager<Card: View>: View {
     let artworks: [Artwork]
@@ -7,7 +8,7 @@ struct ArtworkPager<Card: View>: View {
     @ViewBuilder let card: (Artwork, CGFloat) -> Card
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @GestureState private var translation: CGFloat = 0
+    @State private var translation: CGFloat = 0
     @State private var settling = false
     @State private var destination: Int?
     @State private var settledOffset: CGFloat = 0
@@ -33,48 +34,48 @@ struct ArtworkPager<Card: View>: View {
             .frame(width: width, height: geometry.size.height)
             .clipped()
             .contentShape(Rectangle())
-            .simultaneousGesture(drag(width: width))
+            .gesture(PagerPan { state, distance, velocity in
+                switch state {
+                case .began, .changed:
+                    if !settling { translation = distance }
+                case .ended:
+                    finish(distance: distance, prediction: distance + velocity * 0.18, width: width)
+                case .cancelled, .failed:
+                    if !settling { finish(distance: translation, prediction: translation, width: width, cancelled: true) }
+                default:
+                    break
+                }
+            })
             .onChange(of: index) { _, newValue in
                 if destination != newValue { reset() }
             }
         }
     }
 
-    private func drag(width: CGFloat) -> some Gesture {
-        DragGesture(minimumDistance: 12)
-            .updating($translation) { value, state, transaction in
-                guard !settling, abs(value.translation.width) > abs(value.translation.height) else { return }
-                transaction.animation = nil
-                state = value.translation.width
+    private func finish(distance: CGFloat, prediction: CGFloat, width: CGFloat, cancelled: Bool = false) {
+        guard !settling else { return }
+        let direction = cancelled ? 0 : Self.direction(distance: distance, prediction: prediction, width: width)
+        let target = index + direction
+        let hasTarget = direction != 0 && artworks.indices.contains(target)
+        var immediate = Transaction()
+        immediate.disablesAnimations = true
+        withTransaction(immediate) {
+            settling = true
+            settledOffset = resisted(distance)
+            destination = hasTarget ? target : nil
+            translation = 0
+        }
+        let duration = hasTarget ? 0.35 : 0.24
+        let animation: Animation = reduceMotion ? .easeOut(duration: 0.16) : .spring(duration: duration, bounce: 0.08)
+        withAnimation(animation, completionCriteria: .logicallyComplete) {
+            settledOffset = hasTarget ? -CGFloat(direction) * width : 0
+        } completion: {
+            guard settling else { return }
+            withTransaction(immediate) {
+                if let destination, artworks.indices.contains(destination) { select(destination) }
+                reset()
             }
-            .onEnded { value in
-                guard !settling, abs(value.translation.width) > abs(value.translation.height) else { return }
-                let direction = Self.direction(
-                    distance: value.translation.width,
-                    prediction: value.predictedEndTranslation.width,
-                    width: width
-                )
-                let target = index + direction
-                let hasTarget = direction != 0 && artworks.indices.contains(target)
-                var immediate = Transaction()
-                immediate.disablesAnimations = true
-                withTransaction(immediate) {
-                    settling = true
-                    settledOffset = resisted(value.translation.width)
-                    destination = hasTarget ? target : nil
-                }
-                let duration = hasTarget ? 0.35 : 0.24
-                let animation: Animation = reduceMotion ? .easeOut(duration: 0.16) : .spring(duration: duration, bounce: 0.08)
-                withAnimation(animation, completionCriteria: .logicallyComplete) {
-                    settledOffset = hasTarget ? -CGFloat(direction) * width : 0
-                } completion: {
-                    guard settling else { return }
-                    withTransaction(immediate) {
-                        if let destination, artworks.indices.contains(destination) { select(destination) }
-                        reset()
-                    }
-                }
-            }
+        }
     }
 
     static func direction(distance: CGFloat, prediction: CGFloat, width: CGFloat) -> Int {
@@ -92,8 +93,41 @@ struct ArtworkPager<Card: View>: View {
     }
 
     private func reset() {
+        translation = 0
         settledOffset = 0
         settling = false
         destination = nil
+    }
+}
+
+
+// UIKit arbitrates the horizontal pan against the card's vertical scroll view.
+private struct PagerPan: UIGestureRecognizerRepresentable {
+    let update: (UIGestureRecognizer.State, CGFloat, CGFloat) -> Void
+
+    func makeCoordinator(converter: CoordinateSpaceConverter) -> Coordinator { Coordinator() }
+
+    func makeUIGestureRecognizer(context: Context) -> UIPanGestureRecognizer {
+        let pan = UIPanGestureRecognizer()
+        pan.maximumNumberOfTouches = 1
+        pan.delegate = context.coordinator
+        return pan
+    }
+
+    func handleUIGestureRecognizerAction(_ pan: UIPanGestureRecognizer, context: Context) {
+        update(pan.state, pan.translation(in: pan.view).x, pan.velocity(in: pan.view).x)
+    }
+
+    final class Coordinator: NSObject, UIGestureRecognizerDelegate {
+        func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard let pan = gestureRecognizer as? UIPanGestureRecognizer else { return false }
+            let velocity = pan.velocity(in: pan.view)
+            return abs(velocity.x) > abs(velocity.y)
+        }
+
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                               shouldRecognizeSimultaneouslyWith other: UIGestureRecognizer) -> Bool {
+            other.view is UIScrollView
+        }
     }
 }

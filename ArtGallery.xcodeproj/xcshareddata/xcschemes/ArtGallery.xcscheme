@@ -1,24 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Scheme version="1.7">
-   <BuildAction parallelizeBuildables="YES" buildImplicitDependencies="YES">
+<Scheme
+   LastUpgradeVersion = "2720"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
-         <BuildActionEntry buildForTesting="YES" buildForRunning="YES" buildForProfiling="YES" buildForArchiving="YES" buildForAnalyzing="YES">
-            <BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="A36A3919BE4C4C8D8908690A" BuildableName="ArtGallery.app" BlueprintName="ArtGallery" ReferencedContainer="container:ArtGallery.xcodeproj"/>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A36A3919BE4C4C8D8908690A"
+               BuildableName = "ArtGallery.app"
+               BlueprintName = "ArtGallery"
+               ReferencedContainer = "container:ArtGallery.xcodeproj">
+            </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
-   <TestAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.DebuggerFoundation.Launcher.LLDB" shouldUseLaunchSchemeArgsEnv="YES">
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference skipped="NO"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="EB27337949CF4FB5BC808AE9" BuildableName="ArtGalleryTests.xctest" BlueprintName="ArtGalleryTests" ReferencedContainer="container:ArtGallery.xcodeproj"/></TestableReference>
-         <TestableReference skipped="NO"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="034396C87DFC4E7393B31606" BuildableName="ArtGalleryUITests.xctest" BlueprintName="ArtGalleryUITests" ReferencedContainer="container:ArtGallery.xcodeproj"/></TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EB27337949CF4FB5BC808AE9"
+               BuildableName = "ArtGalleryTests.xctest"
+               BlueprintName = "ArtGalleryTests"
+               ReferencedContainer = "container:ArtGallery.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "034396C87DFC4E7393B31606"
+               BuildableName = "ArtGalleryUITests.xctest"
+               BlueprintName = "ArtGalleryUITests"
+               ReferencedContainer = "container:ArtGallery.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
-   <LaunchAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.DebuggerFoundation.Launcher.LLDB" launchStyle="0" useCustomWorkingDirectory="NO">
-      <BuildableProductRunnable runnableDebuggingMode="0"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="A36A3919BE4C4C8D8908690A" BuildableName="ArtGallery.app" BlueprintName="ArtGallery" ReferencedContainer="container:ArtGallery.xcodeproj"/></BuildableProductRunnable>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A36A3919BE4C4C8D8908690A"
+            BuildableName = "ArtGallery.app"
+            BlueprintName = "ArtGallery"
+            ReferencedContainer = "container:ArtGallery.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
-   <ProfileAction buildConfiguration="Release" shouldUseLaunchSchemeArgsEnv="YES" useCustomWorkingDirectory="NO">
-      <BuildableProductRunnable runnableDebuggingMode="0"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="A36A3919BE4C4C8D8908690A" BuildableName="ArtGallery.app" BlueprintName="ArtGallery" ReferencedContainer="container:ArtGallery.xcodeproj"/></BuildableProductRunnable>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A36A3919BE4C4C8D8908690A"
+            BuildableName = "ArtGallery.app"
+            BlueprintName = "ArtGallery"
+            ReferencedContainer = "container:ArtGallery.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
-   <AnalyzeAction buildConfiguration="Debug"/>
-   <ArchiveAction buildConfiguration="Release" revealArchiveInOrganizer="YES"/>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
 </Scheme>

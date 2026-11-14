@@ -30,7 +30,7 @@ final class GalleryUITests: XCTestCase {
         close.tap()
         app.buttons["toggle-favorite"].firstMatch.tap()
         app.buttons["favorites"].tap()
-        let row = app.staticTexts["Первая картина"]
+        let row = app.descendants(matching: .any).matching(identifier: "favorite-row-chicago:0").firstMatch
         XCTAssertTrue(row.waitForExistence(timeout: 5))
         row.tap()
         expectTitle("Первая картина", in: app)
