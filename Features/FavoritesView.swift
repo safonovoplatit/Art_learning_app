@@ -22,7 +22,10 @@ struct FavoritesView: View {
                                         .background(.quaternary)
                                         .accessibilityHidden(true)
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text(work.title).font(.headline)
+                                        Text(work.title)
+                                            .font(.headline)
+                                            .lineLimit(nil)
+                                            .fixedSize(horizontal: false, vertical: true)
                                         Text(work.author).font(.subheadline).foregroundStyle(.secondary)
                                     }
                                 }

@@ -3,7 +3,7 @@ import UIKit
 
 struct ContentView: View {
     let model: GalleryModel
-    var translationEnabled = true
+    let translationEnabled: Bool
     let museum: MuseumSource
     let museums: [MuseumSource]
     let selectMuseum: (MuseumSource) -> Void
@@ -207,7 +207,7 @@ private struct TranslationIfEnabled: ViewModifier {
     let enabled: Bool
 
     func body(content: Content) -> some View {
-        if enabled { content.modifier(GalleryTranslation(model: model, service: TranslationService())) }
+        if enabled { content.modifier(GalleryTranslation(model: model)) }
         else { content }
     }
 }

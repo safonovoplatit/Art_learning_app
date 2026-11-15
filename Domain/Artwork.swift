@@ -22,10 +22,8 @@ struct Artwork: Identifiable, Codable, Hashable, Sendable {
     let museumName: String?
     let city: String?
     let country: String?
-    let gallery: String?
     let imageBase: URL
     let sourceURL: URL
-    let isZoomable: Bool
     let imageRights: String
     let credit: String?
     let retrievedAt: Date
@@ -45,7 +43,11 @@ struct Artwork: Identifiable, Codable, Hashable, Sendable {
     }
 
     var localizedDate: String? {
-        creationDate?.replacingOccurrences(of: "c. ", with: String(localized: "ок. "))
+        creationDate?.replacingOccurrences(
+            of: #"(?i)(?<![\w.])(?:ca?|approx)\.\s*(?=\d)"#,
+            with: String(localized: "ок.") + "\u{00A0}",
+            options: .regularExpression
+        )
     }
 
     func imageURL(width: Int) -> URL {
@@ -70,7 +72,7 @@ struct Artwork: Identifiable, Codable, Hashable, Sendable {
 }
 
 struct ArtworkTranslation: Codable, Hashable, Sendable {
-    static let currentVersion = 1
+    static let currentVersion = 2
     let title: String
     let annotation: String
     let sourceTitle: String
@@ -78,7 +80,6 @@ struct ArtworkTranslation: Codable, Hashable, Sendable {
     let sourceLanguage: String
     let targetLanguage: String
     let version: Int
-    let updatedAt: Date
 
     func matches(_ artwork: Artwork) -> Bool {
         version == Self.currentVersion && sourceTitle == artwork.originalTitle

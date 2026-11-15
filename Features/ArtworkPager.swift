@@ -35,6 +35,7 @@ struct ArtworkPager<Card: View>: View {
             .onChange(of: visibleID) { _, _ in
                 if scrollPhase == .idle { saveVisibleArtwork() }
             }
+            .modifier(LandscapePagerClipping(size: geometry.size))
         }
     }
 
@@ -46,5 +47,19 @@ struct ArtworkPager<Card: View>: View {
         guard let visibleID, visibleID != selectedID,
               let position = artworks.firstIndex(where: { $0.id == visibleID }) else { return }
         select(position)
+    }
+}
+
+private struct LandscapePagerClipping: ViewModifier {
+    let size: CGSize
+
+    func body(content: Content) -> some View {
+        if size.width > size.height {
+            content
+                .frame(width: size.width, height: size.height)
+                .clipped()
+        } else {
+            content
+        }
     }
 }

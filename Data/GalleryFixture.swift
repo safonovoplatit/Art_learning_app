@@ -3,13 +3,17 @@ import Foundation
 
 struct GalleryFixture: MuseumAPIProvider {
     func page(_ number: Int) async throws -> ArtworkPage {
-        let works = ["Первая картина", "Вторая картина", "Третья картина"].enumerated().map { i, title in
+        let titles = [
+            "Первая картина", "Вторая картина",
+            "Длинное название картины с подробным описанием пейзажа и вечернего света"
+        ]
+        let works = titles.enumerated().map { i, title in
             Artwork(id: "cleveland:\(i)", source: .cleveland, originalTitle: title, originalArtist: "Claude Monet",
                     originalDescription: "Аннотация для проверки галереи.", creationDate: "1880",
-                    museumName: "Cleveland Museum of Art", city: "Cleveland", country: "United States", gallery: nil,
+                    museumName: "Cleveland Museum of Art", city: "Cleveland", country: "United States",
                     imageBase: URL(string: "https://fixture.invalid/\(i)")!,
                     sourceURL: URL(string: "https://clevelandart.org/art/1915.534")!,
-                    isZoomable: true, imageRights: "CC0 1.0", credit: nil, retrievedAt: .now)
+                    imageRights: "CC0 1.0", credit: nil, retrievedAt: .now)
         }
         return ArtworkPage(artworks: works, nextPage: nil, restrictedIDs: [])
     }

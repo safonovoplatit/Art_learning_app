@@ -2,6 +2,23 @@ import Foundation
 import libxml2
 
 enum MuseumText {
+    static func expandingAbbreviations(in text: String) -> String {
+        let replacements = [
+            (#"(?:ca?|approx)\."#, "circa"),
+            (#"no(s?)\."#, "number$1"),
+            (#"fig(s?)\."#, "figure$1"),
+            (#"vol(s?)\."#, "volume$1")
+        ]
+        return replacements.reduce(text) { result, replacement in
+            let (abbreviation, expansion) = replacement
+            return result.replacingOccurrences(
+                of: #"(?i)(?<![\w.])\#(abbreviation)\s*(?=\d)"#,
+                with: expansion + " ",
+                options: .regularExpression
+            )
+        }
+    }
+
     static func plain(_ source: String?) -> String? {
         guard let source, !source.isEmpty else { return nil }
         let wrapped = "<html><body>\(source)</body></html>"

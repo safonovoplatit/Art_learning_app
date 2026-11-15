@@ -2,12 +2,7 @@ import SwiftUI
 @preconcurrency import Translation
 
 @MainActor
-protocol TranslationProviding {
-    func availability() async -> LanguageAvailability.Status
-    func translate(_ artwork: Artwork, using session: TranslationSession) async throws -> ArtworkTranslation
-}
-
-struct TranslationService: TranslationProviding {
+private struct TranslationService {
     static let source = Locale.Language(identifier: "en")
     static let target = Locale.Language(identifier: "ru")
 
@@ -20,27 +15,31 @@ struct TranslationService: TranslationProviding {
             "The Starry Night": "Звёздная ночь",
             "The Bedroom": "Спальня в Арле",
             "Paris Street; Rainy Day": "Парижская улица в дождливый день",
-            "A Sunday on La Grande Jatte — 1884": "Воскресный день на острове Гранд-Жатт"
+            "A Sunday on La Grande Jatte — 1884": "Воскресный день на острове Гранд-Жатт — 1884"
         ]
         let title: String
         if let known = titles[artwork.originalTitle] {
             title = known
         } else {
-            title = try await session.translate(artwork.originalTitle).targetText
+            let sourceTitle = MuseumText.expandingAbbreviations(in: artwork.originalTitle)
+            let translated = try await session.translate(sourceTitle).targetText
+            let singleParagraph = translated.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+            title = singleParagraph.isEmpty ? artwork.originalTitle : singleParagraph
         }
-        let annotation = try await session.translate(artwork.originalDescription).targetText
+        let sourceAnnotation = MuseumText.expandingAbbreviations(in: artwork.originalDescription)
+        let annotation = try await session.translate(sourceAnnotation).targetText
         try Task.checkCancellation()
         return ArtworkTranslation(
             title: title, annotation: annotation, sourceTitle: artwork.originalTitle,
             sourceAnnotation: artwork.originalDescription, sourceLanguage: "en", targetLanguage: "ru",
-            version: ArtworkTranslation.currentVersion, updatedAt: .now
+            version: ArtworkTranslation.currentVersion
         )
     }
 }
 
 struct GalleryTranslation: ViewModifier {
     let model: GalleryModel
-    let service: any TranslationProviding
+    private let service = TranslationService()
 
     @State private var configuration: TranslationSession.Configuration?
     @State private var status: LanguageAvailability.Status?

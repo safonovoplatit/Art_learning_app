@@ -8,8 +8,11 @@ Build and Run
 3. For a physical iPhone, select your team under Signing & Capabilities, set a bundle identifier you control, and run on the device.
 4. For TestFlight, use an Apple Developer Program account to create an App Store Connect record with the same team and bundle identifier. In Xcode, choose Product → Archive → Distribute App.
 The shared scheme includes Release. To verify compilation without signing, run:
+```sh
 xcodebuild -project ArtGallery.xcodeproj -scheme ArtGallery \
   -configuration Release -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build
+```
+
 
 Museum Collections
 The gallery defaults to Cleveland Museum of Art Open Access and serves CC0 images from its CDN. To enable Harvard Art Museums in the Museum menu, add HARVARD_API_KEY = your-key to Config/HarvardKey.local.xcconfig, which Git ignores. The key is embedded in the built app’s Info.plist, so public distribution requires a server-side proxy to protect it. Cleveland Open Access API
@@ -34,6 +37,54 @@ Run Product → Test on an iPhone simulator. Unit tests cover decoding, HTML con
 Use a physical iPhone to verify Apple Translation packs and translation quality. Measure FPS, cold start, memory, and leaks in Instruments, including a 100-card navigation run.
 Install a Prebuilt App
 On an Apple Silicon Mac, unzip Artifacts/ArtGallery-Simulator-arm64.zip, boot an iPhone simulator, and run these commands from the extracted directory:
+
+## Музейные коллекции
+
+По умолчанию лента открывает Cleveland Museum of Art Open Access. Меню «Музей» позволяет переключиться на Harvard Art Museums при наличии ключа. Кливленд отображает свои работы и изображения CC0 из музейного CDN. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access-api). Для локальной сборки добавьте `HARVARD_API_KEY = ваш-ключ` в `Config/HarvardKey.local.xcconfig`. Файл исключён из Git. Значение попадает в Info.plist собранного приложения, поэтому для публичного распространения нужен серверный посредник для защиты ключа. Сборка без ключа открывает Кливленд.
+
+Репозиторий хранит отдельные позиции и страницы для каждого музея. Harvard API разрешает хранить возвращённый контент до двух недель. При восстановлении галереи просроченные записи Harvard удаляются. Изображения Harvard не сохраняются на диск. Карточки показывают права на изображение и ссылку на страницу музея. [Документация Harvard Art Museums API](https://github.com/harvardartmuseums/api-docs).
+
+## Архитектура
+
+- **Domain** содержит `Artwork`, версионированную модель перевода и протоколы источника и репозитория.
+- **Data** содержит адаптеры `ClevelandAPI` и `HarvardAPI`, отдельные DTO, преобразование HTML в обычный текст через системную libxml2, репозиторий SwiftData, `ImagePipeline` и `TranslationService`. Для нового музея нужен адаптер `MuseumAPIProvider` и идентификатор источника в `MuseumSource`.
+- **Features** содержит модель экрана галереи, пагинатор, карточку, избранное и полноэкранный просмотр. `MyApp` собирает зависимости и передаёт их модели.
+Внешних пакетов нет. Кливленд использует музейный CDN, Harvard — IIIF. Перевод работает через Apple Translation.
+
+## Хранение данных
+
+SwiftData хранит оригиналы карточек, переводы, порядок выдачи, последнюю позицию и избранное. При запуске галерея перемешивает сохранённые картины и открывается с первой картины получившегося списка. При подгрузке картины новой страницы перемешиваются и добавляются в конец. Страница и курсор фиксируются одной транзакцией.
+
+Декодированные изображения хранятся в `NSCache` с бюджетом 48 МБ. При системном предупреждении о памяти кэш очищается. Дисковый кэш ограничен 300 МБ, изображения избранного хранятся отдельно с лимитом 100 МБ. При достижении лимита первыми удаляются дольше всего не использовавшиеся файлы. Ответы с `Cache-Control: no-store` пишутся только в память на время отображения. Метаданные остаются доступны при вытеснении изображения. На устройство загружаются варианты IIIF шириной 600 или 843 px. Для увеличиваемого полноэкранного изображения используется вариант до 1800 px. Загрузка и декодирование выполняются вне главного актора, одновременные запросы одинакового URL объединяются.
+
+Карточка показывает ссылку на музей, кредитную строку и сведения о правах.
+
+## TranslationService
+
+`GalleryTranslation` создаёт привязанную к представлению системную сессию и проверяет доступность пары английский → русский. Установленный пакет используется автоматически. При необходимости можно загрузить его с помощью кнопки в панели навигации и системного диалога. До завершения перевода и при неподдерживаемой паре отображается оригинал.
+
+Работы переводятся последовательно с приоритетом текущей, следующей и предыдущей карточек. Кэш хранит оригинальные поля, идентификатор работы, пару языков и версию перевода. При изменении исходного текста или версии результат считается устаревшим. UI сохраняет авторские написания из словаря для распространённых имён художников.
+
+## ArtworkPager
+
+Галерея использует горизонтальный ScrollView и LazyHStack с системной фиксацией по одной карточке. Позиция привязана к ID произведения и сохраняется после остановки прокрутки. Стрелки и действия VoiceOver дублируют навигацию.
+
+## Тесты
+
+В Xcode запустите **Product → Test** на симуляторе iPhone. Unit-тесты проверяют декодирование, HTML, фильтрацию, дедупликацию, восстановление позиции и кэш перевода. UI-тесты работают на локальных данных с подменой музейного API и изображений.
+
+## Ограничения и приёмка
+
+- Системные пакеты Apple Translation и качество перевода проверяются на физическом iPhone.
+- Для приёмочного замера FPS, холодного старта, памяти и утечек нужен физический iPhone и прогон Instruments, включая сценарий со 100 переходами.
+- Проверка прав выполняется при получении ответа API. Исторический кэш без нового ответа сохраняет последний известный статус.
+- Сервер изображений Harvard может вернуть HTTP 403. В этом случае из галереи можно переключиться на Кливленд.
+
+## Установка готовой сборки на симулятор
+
+Распакуйте `Artifacts/ArtGallery-Simulator-arm64.zip` на Mac с Apple Silicon. Запустите симулятор iPhone. Из каталога с распакованным приложением выполните:
+
+```sh
 xcrun simctl install booted ArtGallery.app
 xcrun simctl launch booted org.artgallery.ios
 

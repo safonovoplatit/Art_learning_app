@@ -65,9 +65,16 @@ final class GalleryTests: XCTestCase {
         XCTAssertNil(MuseumText.plain("<p>&nbsp;</p>"))
     }
 
+    func testTranslationExpandsCatalogAbbreviationsButKeepsInitials() {
+        let source = "J.C. 1880; ca. 1890; approx.1900; No. 5; figs. 2–3; Vol. 4; St. Paul."
+        XCTAssertEqual(MuseumText.expandingAbbreviations(in: source),
+                       "J.C. 1880; circa 1890; circa 1900; number 5; figures 2–3; volume 4; St. Paul.")
+    }
+
     func testStorageRestoresPositionFavoritesAndTranslationAcrossContexts() async throws {
         let page = try ClevelandAPI.decode(Self.museumResponse, page: 1, limit: 20)
         let work = try XCTUnwrap(page.artworks.first)
+        XCTAssertEqual(work.localizedDate, "ок.\u{00A0}1880")
         let container = try ModelContainer(for: StoredArtwork.self, StoredGallery.self,
                                            configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         let provider = StubProvider(result: .success(page))
@@ -78,7 +85,8 @@ final class GalleryTests: XCTestCase {
         try store.setFavorite(work, saved: true)
         let translation = ArtworkTranslation(title: "Картина", annotation: "Аннотация",
                                              sourceTitle: work.originalTitle, sourceAnnotation: work.originalDescription,
-                                             sourceLanguage: "en", targetLanguage: "ru", version: 1, updatedAt: .now)
+                                             sourceLanguage: "en", targetLanguage: "ru",
+                                             version: ArtworkTranslation.currentVersion)
         try store.saveTranslation(translation, for: work.id)
         let reopened = GalleryStore(container: container, provider: provider)
         let duplicate = try await reopened.load(page: 2, knownIDs: [work.id])
@@ -124,7 +132,7 @@ final class GalleryTests: XCTestCase {
 
     private static let museumResponse = Data("""
     {"info":{"total":25},"data":[
-      {"id":94979,"title":"Work","description":"Oil &amp; canvas.","share_license_status":"CC0",
+      {"id":94979,"title":"Work","description":"Oil &amp; canvas.","creation_date":"ca. 1880","share_license_status":"CC0",
        "url":"https://clevelandart.org/art/1915.534",
        "images":{"web":{"url":"https://openaccess-cdn.clevelandart.org/web.jpg"}}}
     ]}

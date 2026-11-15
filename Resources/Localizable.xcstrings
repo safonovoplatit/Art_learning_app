@@ -37,9 +37,6 @@
     "Закрыть" : {
       "extractionState" : "manual"
     },
-    "Зал по данным каталога: %@" : {
-      "extractionState" : "manual"
-    },
     "Здесь будут сохранённые картины" : {
       "extractionState" : "manual"
     },
@@ -88,7 +85,7 @@
     "Нет произведений" : {
       "extractionState" : "manual"
     },
-    "ок. " : {
+    "ок." : {
 
     },
     "Открываем галерею…" : {

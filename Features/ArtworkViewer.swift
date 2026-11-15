@@ -15,7 +15,7 @@ struct ArtworkViewer: View {
             Color.black.ignoresSafeArea()
             Group {
                 if let picture {
-                    ZoomableImage(image: picture, zoomable: artwork.isZoomable, title: artwork.title)
+                    ZoomableImage(image: picture, title: artwork.title)
                         .ignoresSafeArea(edges: .bottom)
                 } else if failed {
                     VStack(spacing: 12) {
@@ -38,15 +38,15 @@ struct ArtworkViewer: View {
         .preferredColorScheme(.dark)
         .task(id: retry) {
             failed = false
-            for rendition in (artwork.isZoomable ? [width, 843] : [843, width]).uniqued {
+            let renditions = width == 843 ? [width] : [width, 843]
+            for rendition in renditions {
                 if let image = try? await pipeline.image(artwork.imageURL(width: rendition), pixels: rendition * 3 / 2, fallback: artwork.fallbackImageURL(width: rendition)),
                    !Task.isCancelled {
                     picture = image
                     break
                 }
             }
-            if artwork.isZoomable,
-               let large = try? await pipeline.image(artwork.imageURL(width: 1800), pixels: 2200, fallback: artwork.fallbackImageURL(width: 1800)),
+            if let large = try? await pipeline.image(artwork.imageURL(width: 1800), pixels: 2200, fallback: artwork.fallbackImageURL(width: 1800)),
                !Task.isCancelled {
                 picture = large
             }
@@ -55,19 +55,14 @@ struct ArtworkViewer: View {
     }
 }
 
-private extension Array where Element == Int {
-    var uniqued: [Int] { reduce(into: []) { if !$0.contains($1) { $0.append($1) } } }
-}
-
 private struct ZoomableImage: UIViewRepresentable {
     let image: UIImage
-    let zoomable: Bool
     let title: String
 
     func makeUIView(context: Context) -> ZoomScrollView { ZoomScrollView() }
 
     func updateUIView(_ view: ZoomScrollView, context: Context) {
-        view.update(image: image, zoomable: zoomable, title: title)
+        view.update(image: image, title: title)
     }
 }
 
@@ -79,6 +74,7 @@ private final class ZoomScrollView: UIScrollView, UIScrollViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         delegate = self
+        maximumZoomScale = 4
         contentInsetAdjustmentBehavior = .never
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
@@ -93,8 +89,7 @@ private final class ZoomScrollView: UIScrollView, UIScrollViewDelegate {
 
     required init?(coder: NSCoder) { nil }
 
-    func update(image: UIImage, zoomable: Bool, title: String) {
-        let nextMaximum: CGFloat = zoomable ? 4 : 1
+    func update(image: UIImage, title: String) {
         if artwork.image !== image {
             let previous = artwork.image?.size ?? .zero
             artwork.image = image
@@ -102,7 +97,6 @@ private final class ZoomScrollView: UIScrollView, UIScrollViewDelegate {
             let ratio = image.size.width / max(1, image.size.height)
             if abs(oldRatio - ratio) > 0.02 { dirty = true }
         }
-        maximumZoomScale = nextMaximum
         artwork.accessibilityLabel = title
         setNeedsLayout()
     }
@@ -133,7 +127,6 @@ private final class ZoomScrollView: UIScrollView, UIScrollViewDelegate {
     }
 
     @objc private func doubleTapped(_ tap: UITapGestureRecognizer) {
-        guard maximumZoomScale > 1 else { return }
         if zoomScale > 1.01 {
             setZoomScale(1, animated: true)
         } else {

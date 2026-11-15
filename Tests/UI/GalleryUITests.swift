@@ -5,6 +5,7 @@ final class GalleryUITests: XCTestCase {
     @MainActor
     func testSwipeBackAndCancelSmallDrag() {
         let app = launch()
+        XCUIDevice.shared.orientation = .portrait
         let title = app.staticTexts["artwork-title"].firstMatch
         XCTAssertTrue(title.waitForExistence(timeout: 8))
         XCTAssertEqual(title.label, "Первая картина")
@@ -24,6 +25,31 @@ final class GalleryUITests: XCTestCase {
         surface.swipeRight()
         expectTitle("Первая картина", in: app)
         XCTAssertTrue(firstCount.waitForExistence(timeout: 6))
+    }
+
+    @MainActor
+    func testLandscapeSwipeAlignsNextCardToSamePosition() {
+        let app = launch()
+        let device = XCUIDevice.shared
+        device.orientation = .landscapeLeft
+        defer { device.orientation = .portrait }
+
+        expectTitle("Первая картина", in: app)
+        let title = app.staticTexts["artwork-title"].firstMatch
+        let image = app.buttons["open-artwork"].firstMatch
+        XCTAssertTrue(image.waitForExistence(timeout: 5))
+        XCTAssertLessThan(image.frame.midX, title.frame.minX)
+        let firstTitleX = title.frame.minX
+        let firstTitleHeight = title.frame.height
+
+        image.swipeLeft()
+        expectTitle("Вторая картина", in: app)
+        XCTAssertTrue(app.staticTexts["Картина 2"].waitForExistence(timeout: 5))
+        XCTAssertEqual(title.frame.minX, firstTitleX, accuracy: 1)
+
+        app.buttons["next-artwork"].tap()
+        expectTitle("Длинное название картины с подробным описанием пейзажа и вечернего света", in: app)
+        XCTAssertGreaterThan(title.frame.height, firstTitleHeight)
     }
 
     @MainActor

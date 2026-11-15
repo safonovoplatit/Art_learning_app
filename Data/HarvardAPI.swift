@@ -81,9 +81,9 @@ private struct HarvardWork: Decodable {
             id: "harvard:\(id)", source: .harvard, originalTitle: title,
             originalArtist: MuseumText.plain(artist), originalDescription: annotation,
             creationDate: MuseumText.plain(dated), museumName: "Harvard Art Museums",
-            city: "Cambridge", country: "United States", gallery: nil,
+            city: "Cambridge", country: "United States",
             imageBase: image, sourceURL: URL(string: "https://harvardartmuseums.org/collections/object/\(id)")!,
-            isZoomable: true, imageRights: MuseumText.plain(imageCopyright ?? copyright) ?? "Harvard Art Museums",
+            imageRights: MuseumText.plain(imageCopyright ?? copyright) ?? "Harvard Art Museums",
             credit: MuseumText.plain(creditline), retrievedAt: .now
         )
     }

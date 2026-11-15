@@ -101,8 +101,8 @@ private struct ClevelandWork: Decodable {
             id: "cleveland:\(id)", source: .cleveland, originalTitle: title,
             originalArtist: MuseumText.plain(artist), originalDescription: annotation,
             creationDate: MuseumText.plain(creation_date), museumName: "Cleveland Museum of Art",
-            city: "Cleveland", country: "United States", gallery: nil, imageBase: webImage, sourceURL: url,
-            isZoomable: true, imageRights: "CC0 1.0",
+            city: "Cleveland", country: "United States", imageBase: webImage, sourceURL: url,
+            imageRights: "CC0 1.0",
             credit: MuseumText.plain(creditline), retrievedAt: .now
         )
         artwork.largeImageURL = largeImage

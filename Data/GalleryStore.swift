@@ -7,6 +7,7 @@ final class StoredArtwork {
     var payload: Data
     var order: Int?
     var savedAt: Date?
+    // Retained for compatibility with existing SwiftData stores.
     var viewedAt: Date?
 
     init(id: String, payload: Data, order: Int? = nil) {
@@ -102,7 +103,6 @@ final class GalleryStore: ArtworkRepository {
     func savePosition(_ id: String) throws {
         try transaction {
             try state().currentID = id
-            try row(id)?.viewedAt = .now
         }
     }
 
